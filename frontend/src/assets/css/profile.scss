@@ -1,0 +1,24 @@
+.user-profile {
+
+	.user-img {
+
+		@extend .user-img-lg;
+		margin-bottom: 15px;
+
+	}
+
+	.user-name {
+		max-width: 300px;
+		@extend .center-div;
+	}
+
+	.user-role {
+		color: $primary;
+		font-weight: bold;
+	}
+
+	.user-bio {
+		@extend .text-boxed;
+	}
+
+}

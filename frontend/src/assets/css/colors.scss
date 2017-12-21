@@ -1,0 +1,126 @@
+/*COLORS*/
+$primary: #1166aa;
+$d-primary: darken($primary,15%);
+$l-primary: lighten($primary,12%);
+.primary {color:$primary !important;}
+.d-primary {color:$d-primary !important;}
+.l-primary {color:$l-primary !important;}
+
+$secondary: #84bd00;
+$d-secondary: darken($secondary,5%);
+$l-secondary: lighten($secondary,7%);
+.secondary {color:$secondary !important;}
+.d-secondary {color:$d-secondary !important;}
+.l-secondary {color:$l-secondary !important;}
+
+$black: #1e1e1e;
+$l-black: #333333;
+.black {color: $black !important;}
+.l-black {color: $l-black !important;}
+
+$gray: #ccc;
+$d-gray: darken($gray,30%);
+$l-gray: lighten($gray,12%);
+.gray {color:$gray !important;}
+.d-gray {color: $d-gray !important;}
+.l-gray {color: $l-gray !important;}
+
+$gray-bg: #e8e8e8;
+$gray-md: #e0e0e0;
+
+$success: #26a69a;
+$danger: #ee6e73;
+$warning: #ffc107;
+
+$white: #fff;
+
+//BACKGROUNDS
+[class^="bg-"] {
+	padding: 3px 10px;
+	border-radius: 2px;
+}
+
+.bg-primary {
+	background: $primary;
+	color: $white;
+}
+
+.bg-d-primary {
+	background: $d-primary;
+	color: $white;
+}
+
+.bg-l-primary {
+	background: $l-primary;
+	color: $white;
+}
+
+.bg-secondary {
+	background: $secondary;
+	color: $white;
+}
+
+.bg-d-secondary {
+	background: $d-secondary;
+	color: $white;
+}
+
+.bg-l-secondary {
+	background: $l-secondary;
+	color: $white;
+}
+
+.bg-primary 	{
+	background-color: rgba($primary,0.2) !important;
+	color: $primary;
+}
+
+.bg-success 	{
+	background-color: rgba($success,0.2) !important;
+}
+
+.bg-info 		{
+	background-color: rgba($l-primary,0.5) !important;
+	color: $white;
+}
+
+.bg-warning 	{
+	background-color: rgba($warning,0.6) !important;
+	//color:$white;
+}
+
+.bg-danger 		{
+	background-color: rgba($danger,.5) !important;
+	color:$white;
+}
+
+//SOCIAL
+$blue-fb:#3b5998;
+$red-g:#F44336;
+$blue-tw:#1B95E0;
+$blue-lk:#0084bf;
+.blue-fb {
+	background:$blue-fb;
+	&:hover {
+		background: lighten($blue-fb,5%);
+	}
+}
+.red-g {
+	background:$red-g;
+	&:hover {
+		background: lighten($red-g,5%);
+	}
+}
+.blue-tw {
+	background:$blue-tw;
+	&:hover {
+		background: lighten($blue-tw,5%);
+	}
+}
+.blue-lk {
+	background:$blue-lk;
+	&:hover {
+		background: lighten($blue-lk,5%);
+	}
+}
+/*END COLORS*/

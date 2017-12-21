@@ -1,0 +1,134 @@
+//HELPERS
+a, button, img {
+	outline: none;
+}
+
+/* TRANSITIONS */
+.transition2 {
+	transition: all .2s ease;
+}
+
+/* TEXT WRAPS ELLIPSIS */
+.ellipsis {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+/* CLEARFIX AND DIVIDERS */
+.clearfix {
+	clear: both;
+	width: 100%;
+}
+
+.divider {
+	height: 1px;
+	background: $l-gray;
+}
+
+/* MARGINS AND PADDINGS */
+.center-div {
+	margin: 0 auto;
+}
+
+.mt-xl {
+	margin-top: 60px;
+}
+.mt-l {
+	margin-top: 30px;
+}
+.mt-m {
+	margin-top: 15px;
+}
+.mt-s {
+	margin-top: 5px;
+}
+.mb-xl {
+	margin-bottom: 60px;
+}
+.mb-l {
+	margin-bottom: 30px;
+}
+.mb-m {
+	margin-bottom: 15px;
+}
+.mb-s {
+	margin-bottom: 5px;
+}
+
+/* FONTS */
+.fs-xl {font-size: 3em;}
+.fs-l {font-size: 2em;}
+.fs-m {font-size: 1.5em;}
+.fs-n {font-size: 1em;}
+.fs-s {font-size: .8em;}
+.fs-xs {font-size: .5em;}
+
+/* BUTTONS */
+.btn, .btn-sm {
+
+	@extend .transition2;
+
+	&:hover {@extend .transition2;}
+
+	&.btn-primary {
+
+		&:hover {
+
+			background: $l-primary;
+
+		}
+
+	}
+
+	&.btn-secondary {
+
+		&:hover {}
+
+	}
+
+}
+
+/* USER IMAGE */
+.user-img {
+
+	text-align: center;
+	overflow: hidden;
+	border-radius: 50%;
+	background: $gray;
+
+	img {
+		width: auto;
+		height: 100%;
+	}
+
+}
+
+	.user-img-lg {
+		@extend .user-img;
+		width: 120px;
+		height: 120px;
+	}
+
+	.user-img-med {
+		@extend .user-img;
+		width: 60px;
+		height: 60px;
+	}
+
+	.user-img-sm {
+		@extend .user-img;
+		width: 30px;
+		height: 30px;
+	}
+
+/* TEXT BOXES */
+.text-boxed {
+	border-radius: 3px;
+	background: $l-gray;
+	padding: 15px;
+	color: $d-gray;
+	p {
+		margin-bottom: 0;
+	}
+}

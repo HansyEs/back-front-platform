@@ -1,0 +1,71 @@
+@import './assets/css/sb-admin.min.css'; /* BOOTSTRAP DASHBOARD TEMPLATE */
+@import './assets/css/colors.scss';
+@import './assets/css/helpers.scss';
+
+#app {
+
+	font-family: 'Avenir', Helvetica, Arial, sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+
+/* APP GLOBAL STYLES */
+
+	&.talentooAdmin {
+
+		a {
+
+			&:hover {
+				text-decoration: none;
+			}
+
+		}
+
+		// RESET TEMPLATE 
+		.bg-light {
+			background-color: $primary !important;
+		}
+
+		.btn-primary:not([disabled]):not(.disabled).active,
+		.btn-primary:not([disabled]):not(.disabled):active,
+		.show>.btn-primary.dropdown-toggle {
+			box-shadow: none !important;
+		}
+		
+
+		ol.breadcrumb {
+
+			li {
+
+				margin-left: 0;
+
+				&:first-child {
+					margin-left: 10px;
+					margin-right: 0;
+				}
+
+				a {
+
+					color: $primary;
+					font-weight: bold;
+
+				}
+
+			}
+
+		}
+
+	}
+
+}
+
+/* NAVBAR STYLES */
+@import './assets/css/navbar.scss';
+
+/* PROFILE STYLES */
+@import './assets/css/profile.scss';
+
+/* ITEMS LIST STYLES */
+@import './assets/css/items-list.scss';
+
+/* ITEMS TABLES STYLES */
+@import './assets/css/items-table.scss';

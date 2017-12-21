@@ -1,0 +1,42 @@
+.items-table {
+
+	width: 100%;
+
+	thead {
+
+		th {
+
+			td {
+				padding: 10px 10px;
+				vertical-align: middle;
+			}
+
+		}
+
+	}
+
+	tbody {
+
+		tr {
+
+			&:nth-child(odd) {
+				background: $l-gray;
+			}
+
+			td {
+				padding: 10px 10px;
+				vertical-align: middle;
+			}
+
+		}
+
+	}
+
+	.tb-id {
+		width: 30px;
+	}
+	.tb-img {
+		width: 40px;
+	}
+
+}
