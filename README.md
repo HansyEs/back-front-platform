@@ -10,3 +10,5 @@ nodemon server.js
 npm install
 
 npm run dev
+
+View -> http://localhost:8080/
