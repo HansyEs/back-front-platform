@@ -1,5 +1,5 @@
 # tt-dashboard
-Basic SPA Dashboard with Node (bck) and VUE (frnt)
+> Basic SPA Dashboard with Node (bck) and VUE (frnt)
 
 ## / BACKend
 ``` bash
