@@ -3,8 +3,10 @@ Basic SPA Dashboard with Node (bck) and VUE (frnt)
 
 ## / BACKend
 ``` bash
+# install dependencies
 npm install
 
+# run server
 nodemon server.js
 ```
 
