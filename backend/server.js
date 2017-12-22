@@ -9,7 +9,7 @@ app.use(cors());
 const items = require('./data/items.js');
 
 app.get('/', function(req, res){
-  res.send('Hello World!')
+  res.send('Server ON!')
 });
 
 //API
