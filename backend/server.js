@@ -7,16 +7,74 @@ app.use(cors());
 
 //REQUIRE FAKE DATA
 const items = require('./data/items.js');
+const users = require('./data/users.js');
 
 app.get('/', function(req, res){
   res.send('Server ON!')
 });
 
-//API
+/*API
+    Es muy importante versionar las llamadas de la api, eso permite tener activas sinultaneamente apis antiguas y nuevas, 
+    por ejemplo para pruebas de una nueva versión o que la aplicación movil no este actualizada y tire todavía de las apis antiguas.
+    Así una versión puede retornar un JSON y la otra otro completamente distinto atendiendo a las nuevas necesidades y las dos conviven sin problemas
+*/
+
+// Petición de usuarios
+// Si no recibe el id debe devolver toda la lista de usuarios.
+app.get('/api/v1.0/users_test/:id?/:page?/:howmany?',function(req,res){
+    res.write('\nID del usuario  = '+req.params['id']);
+    res.write('\npagina  = '+req.params['page']);
+    res.write('\ncuantos  = '+req.params['howmany']);
+    res.write('\n');
+    // Ahora sacamos parametros adicionales si los hay.... ?page=5&howmany=20
+    res.write('parametros: \n');
+    url = require('url');
+    var query = url.parse(req.url,true).query;
+    res.write(JSON.stringify(query)+'\n\n');
+
+    // Ahora los datos reales
+    var found=false;
+    if (req.params['id']){
+        users.filter(function(user){
+            if(user.id == req.params['id']){
+                res.write('\nLos datos del usuario '+req.params['id']+' son '+JSON.stringify(user));
+                found = true;
+            }
+        });
+        if (!found){
+            res.write('\nUsuario no encontrado');
+        }
+    } else {
+        res.write(JSON.stringify(users));
+    }
+    res.end(); 
+});
+
+app.get('/api/v1.0/users/:id?',function(req,res){
+    // Tiene derechos???
+    var response;
+    var found=false;
+    if (req.params['id']){
+        users.filter(function(user){
+            if(user.id == req.params['id']){
+                response = user;
+                found = true;
+            }
+        });
+        if (!found){
+            response = {error:"User not Found"};
+        }
+    } else {
+        response = users;
+    }
+    res.json(response);
+});
+
+
+
 app.get('/api/items', function(req, res){
 
 	var response = [];
-
 // TO DO -> Refactorizar -> Una unica fn para queries
 // TO DO -> Leyendo url ?
 	if(typeof req.query) {
