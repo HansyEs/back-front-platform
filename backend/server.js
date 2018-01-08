@@ -53,6 +53,7 @@ app.get('/api/v1.0/users_test/:id?/:page?/:howmany?',function(req,res){
 app.get('/api/v1.0/users/:id?',function(req,res){
     // Tiene derechos???
     var response;
+    var status = 200;
     var found=false;
     if (req.params['id']){
         users.filter(function(user){
@@ -62,12 +63,14 @@ app.get('/api/v1.0/users/:id?',function(req,res){
             }
         });
         if (!found){
+            status = 204;
             response = {error:"User not Found"};
         }
     } else {
         response = users;
     }
-    res.json(response);
+    
+    res.status(status).json(response);
 });
 
 
