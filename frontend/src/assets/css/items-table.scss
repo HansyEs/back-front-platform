@@ -9,6 +9,7 @@
 			td {
 				padding: 10px 10px;
 				vertical-align: middle;
+				color: $primary;
 			}
 
 		}
@@ -20,7 +21,7 @@
 		tr {
 
 			&:nth-child(odd) {
-				background: $l-gray;
+				background: rgba($l-gray,0.4);
 			}
 
 			td {
@@ -37,6 +38,45 @@
 	}
 	.tb-img {
 		width: 40px;
+	}
+
+}
+
+.dt-bootstrap4 {
+
+	div[class^='dataTables_'] {
+
+		input[type='text'],
+		input[type='search'],
+		input[type='number'],
+		select {
+			display: inline-block;
+		}
+
+		label {
+		    white-space: nowrap;
+		}
+
+		&.withIcon {
+
+			i {
+				opacity: 0.33;
+				margin-left: 6px;
+			}
+
+			input {
+				margin-left: -25px;
+				padding-left: 25px;
+			}
+
+		}
+
+	}
+
+	.dataTables_length {
+		select {
+			max-width: 70px;
+		}
 	}
 
 }

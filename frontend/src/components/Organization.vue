@@ -16,8 +16,10 @@
       </div>
     </div>
 
+    <div class="table-responsive">
     <div class="dataTables_wrapper container-fluid dt-bootstrap4" id="dataTable_wrapper">
-      <div class="row">
+
+      <div class="row mb-s mt-s">
 
         <div class="col-sm-12 col-md-6">
           <div class="dataTables_length" id="dataTable_length">
@@ -31,9 +33,9 @@
         </div>
 
         <div class="col-sm-12 col-md-6">
-          <div id="dataTable_filter" class="dataTables_filter">
-            <label>Search:
-              <input type="search" class="form-control form-control-sm" placeholder="" aria-controls="dataTable">
+          <div id="dataTable_filter" class="dataTables_filter withIcon">
+            <label><i class="fa fa-search" title="Search"></i>
+              <input placeholder="Type your search..." type="search" class="form-control form-control-sm" aria-controls="dataTable">
             </label>
           </div>
         </div>
@@ -47,6 +49,7 @@
         </div>
         -->
       </div>
+
       <div class="row">
         <div class="col-sm-12">
 
@@ -57,17 +60,19 @@
               <th><td>#ID</td></th>
               <th><td><i class="fa fa-circle-user-o"></i></td></th>
               <th><td>Name</td></th>
-              <th><td>Location</td></th>
-              <th><td>Flag</td></th>
+              <th><td>Nickname</td></th>
+              <th><td>Birth Date</td></th>
+              <th><td>Admin</td></th>
             </thead>
 
             <tbody>
               <tr class="item" v-for="item in items">
                 <td class="text-center tb-id">{{item.id}}</td>
                 <td class="tb-img"><div class="user-img-sm"><img :src="item.imageURL"></div></td>
-                <td class="user-name">{{item.name}}</td>
-                <td>{{item.location}}</td>
-                <td>{{item.flag}}</td>
+                <td class="user-name"><b>{{item.name}}</b> {{item.surname}}</td>
+                <td>{{item.nick_name}}</td>
+                <td>{{item.birth_date}}</td>
+                <td>{{item.admin}}</td>
               </tr>
             </tbody>
 
@@ -78,6 +83,7 @@
       </div>
 
     </div>
+  </div>
     
   </div>
 </template>
@@ -105,7 +111,9 @@ export default {
     var that = this; // Saving this as that to keep access to all components
 
     // AXIOS API request to Express Server
-    axios.get('http://localhost:3000/api/items')
+    var urlAPI = 'http://localhost:3000/api/v1.0/users';
+
+    axios.get(urlAPI)
       .then(function (response) {
         console.log(response.data);
         that.items = response.data;
