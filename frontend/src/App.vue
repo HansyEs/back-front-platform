@@ -1,6 +1,6 @@
 <template>
 
-  <div id="app" class="talentooAdmin">
+  <div id="app" class="talentooAdmin" >
 
     <div class="container" style="display:none;">
       <!-- Router link for SPA not refreshing -->
@@ -25,9 +25,22 @@
 </template>
 
 <script>
+
 export default {
-  name: 'app'
+
+  name: 'app',
+
+  data() {
+    return {
+    }
+  },
+
+  created: function(){
+
+  }
+
 }
+
 </script>
 
 <style lang="scss">

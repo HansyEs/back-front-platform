@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Home from '@/components/Home';
-import Profile from '@/components/Profile';
+import UserProfile from '@/components/user-profile';
 import Organization from '@/components/Organization';
 
 Vue.use(Router)
@@ -16,7 +16,7 @@ export default new Router({
     {
       path: '/profile',
       name: 'Profile',
-      component: Profile
+      component: UserProfile
     },
     {
       path: '/organization',

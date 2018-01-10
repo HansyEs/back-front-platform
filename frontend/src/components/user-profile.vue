@@ -2,7 +2,7 @@
   <div class="container-fluid user-profile">
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
-        <a href="#">Profile</a>
+        <a href="#">My Profile</a>
       </li>
       <li class="breadcrumb-item active"></li>
     </ol>
@@ -11,18 +11,18 @@
 
       <div class="col-sm-12 text-center">
         <div class="user-img center-div">
-          <img src="" alt="" />
+          <img :src="user.imageURL" alt="" />
         </div>
       </div>
 
       <div class="col-sm-12">
         <div class="user-name text-center">
-          <h3>User name user name user name user name</h3>
+          <h3>{{user.name}} {{user.surname}}</h3>
         </div>
       </div>
 
       <div class="col-sm-12 user-role text-center">
-        <p>Admin</p>
+        <p>{{user.admin}}</p>
       </div>
 
       <div class="col-sm-12">
@@ -30,7 +30,7 @@
       </div>
 
       <div class="col-sm-12">
-        <h5>User bio</h5>
+        <h5>User info</h5>
       </div>
 
       <div class="col-sm-12">
@@ -51,34 +51,21 @@ import axios from 'axios';
 
 export default {
 
-  name: 'Profile',
+  name: 'UserProfile',
 
   data() {
     return {
-      user: ''
+      msg: ''
+    }
+  },
+
+  computed: {
+    user () {
+      return this.$store.state.authUser
     }
   },
 
   created: function(){
-
-    console.log('Profile::created'); // useful for understanding the lifecycle
-
-    var that = this; // Saving this as that to keep access to all components
-
-    // TO DO -> get user ID
-    // TO DO -> API get/user:id
-
-    // AXIOS API request to Express Server
-    /*
-    axios.get('http://localhost:3000/api/user:id')
-      .then(function (response) {
-        //console.log(response.data);
-      })
-      .catch(function (error) {
-        //console.log(error);
-        that.msg = error.data;
-      });
-    */
 
   }
 

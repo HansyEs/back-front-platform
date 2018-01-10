@@ -4,20 +4,20 @@
     <div class="row">
       <div class="col-sm-8">
         <div class="user-img">
-          <img src="" alt="" />
+          <!--<img :src="user.imageURL" alt="" />-->
         </div>
       </div>
       <div class="col-sm-4 user-view text-right">
         <router-link to="/profile" class="btn-sm btn-primary">edit</router-link>
       </div>
     </div>
-
+    
     <div class="row">
       <div class="col-sm-12">
-        <h4 class="ellipsis user-name">User Name User Name User Name User Name</h4>
+        <h4 class="ellipsis user-name">{{user.name}} {{user.surname}}</h4>
       </div>
       <div class="col-sm-12 user-role text-left">
-        <p>Admin</p>
+        <p>{{user.admin}}</p>
       </div>
     </div>
 
@@ -32,14 +32,17 @@ export default {
 
   data() {
     return {
+      msg: ''
     }
+  },
 
+  computed: {
+    user () {
+      return this.$store.state.authUser
+    }
   },
 
   created: function(){
-
-    // TO DO -> get user ID
-    // TO DO -> API get/user:id
 
   }
 
