@@ -61,7 +61,7 @@ export default {
 
   computed: {
     user () {
-      return this.$store.state.authUser
+      return this.$store.state.authUser // from -> ./store/store.js
     }
   },
 
