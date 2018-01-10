@@ -3,9 +3,10 @@ import Vuex from 'vuex';
 
 Vue.use(Vuex);
 
-// STORE EXAMPLES
+// STORE EXAMPLESi
 const state = {
     count: 0,
+    // TO DO -> Create separate Module for get Auth User
     authUser : getAuthUser() || '' // -> or empty to avoid error while loading
 };
 
