@@ -11,7 +11,9 @@
         <router-link to="/profile" class="btn-sm btn-primary">edit</router-link>
       </div>
     </div>
-
+<!--
+    <p>{{user.name}}</p>
+-->   
     <div class="row">
       <div class="col-sm-12">
         <h4 class="ellipsis user-name">{{user.name}} {{user.surname}}</h4>
@@ -20,7 +22,7 @@
         <p>{{user.admin}}</p>
       </div>
     </div>
-
+    
   </div>
 </template>
 
@@ -38,7 +40,8 @@ export default {
 
   computed: {
     user () {
-      return this.$store.state.authUser // from -> ./store/store.js
+      //return this.$store.state.authUser // from -> ./store/store.js
+      return this.$store.state.getAuthUser.info; // from -> ./store/getAuthUser module
     }
   },
 

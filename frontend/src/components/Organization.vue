@@ -115,12 +115,12 @@ export default {
 
     axios.get(urlAPI)
       .then(function (response) {
-        console.log(response.data);
+        //console.log(response.data);
         that.items = response.data;
         that.msg = 'Loaded';
       })
       .catch(function (error) {
-        //console.log(error);
+        console.log(error);
         that.msg = error.data;
       });
 

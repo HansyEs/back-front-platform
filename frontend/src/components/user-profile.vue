@@ -61,12 +61,13 @@ export default {
 
   computed: {
     user () {
-      return this.$store.state.authUser // from -> ./store/store.js
+      //return this.$store.state.authUser // from -> ./store/store.js
+      return this.$store.state.getAuthUser.info; // from -> ./store/getAuthUser module
     }
   },
 
   created: function(){
-
+    console.log('User Profile::created'); // useful for understanding the lifecycle
   }
 
 }
