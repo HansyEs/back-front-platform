@@ -10,6 +10,8 @@
 
 <script>
 
+import auth from '@/auth/auth'
+
 export default {
 
   name: 'app-footer',

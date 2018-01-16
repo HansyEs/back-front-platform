@@ -1,5 +1,13 @@
 <template>
-  <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light" id="mainNav">
+  <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light" id="mainNav" v-if="isLoggedIn">
+    
+    <!-- Router link for SPA not refreshing -->
+    <!--
+      <router-link to="/">Home</router-link>
+      <router-link to="/profile">Profile</router-link>
+      <router-link to="/organization">Organization</router-link>
+    -->
+    
     <router-link to="/" tag="a" class="navbar-brand">
       TT Dashboard
     </router-link>
@@ -146,6 +154,14 @@ export default {
   },
 
   created: function(){
+  },
+
+  computed: {
+    isLoggedIn() {
+      var q = this.$store.getters.isLoggedIn;
+      //console.log(q)
+      return q;
+    }
   }
 
 }

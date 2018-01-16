@@ -2,15 +2,7 @@
 
   <div id="app" class="talentooAdmin" >
 
-    <!-- TO DO => if(user.auth()) -->
-
-    <div class="container" style="display:none;">
-      <!-- Router link for SPA not refreshing -->
-      <router-link to="/">Home</router-link>
-      <router-link to="/profile">Profile</router-link>
-      <router-link to="/organization">Organization</router-link>
-    </div>
-
+    <!-- TO DO => if(user.auth()) -> v-if -->
     <navbar></navbar>
 
     <div class="content-wrapper">
@@ -21,10 +13,9 @@
       <app-footer></app-footer>
 
     </div>
-
     <!-- END TO DO => if(user.auth()) -->
 
-    <!-- TO DO => if(!user.auth()) -->
+    <!-- TO DO => if(!user.auth()) -> v-if -->
 
       <!-- Login.vue 
       <div class="container" id="login">

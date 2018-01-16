@@ -34,6 +34,7 @@ export default {
   created: function(){
 
     console.log('LOGIN::created');
+    console.log('AuthState::',this.$store.state.authState);
 
   },
 
@@ -41,8 +42,11 @@ export default {
     login () {
       auth.login(this.email, this.pass, loggedIn => {
         if (!loggedIn) {
+          //this.$store.dispatch('logout');
+          console.log("ERROR :: TO DO => style error message");
           this.error = true
         } else {
+          this.$store.dispatch('login'); // Change State in Store
           this.$router.replace(this.$route.query.redirect || '/') // If there is no redirect url send them to => '/'
         }
       })
