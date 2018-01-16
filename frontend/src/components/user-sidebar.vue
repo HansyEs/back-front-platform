@@ -41,6 +41,7 @@ export default {
     user () {
       //return this.$store.state.count // from -> ./store/store.js
       return this.$store.state.getAuthUser.info; // from -> ./store/getAuthUser module
+      //return this.$store.state.getAuthUser.dispatch('getUser'); // from -> ./store/getAuthUser module
     }
   },
 

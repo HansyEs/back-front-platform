@@ -1,38 +1,50 @@
-console.log("=> STORE Module => getAuthUser ID / token / whatever...")
+// AJAX with vue
+import axios from 'axios';
 
 const state = {
-  info: getAuthUser() || ''
+  info: '' // Initial State
 }
 
 // getters
 const getters = {}
 
-// actions
-const actions = {}
-
 // mutations
-const mutations = {}
+const GET_USER = "GET_USER";
 
-// AJAX with vue
-import axios from 'axios';
+const mutations = {
+  [GET_USER](state) {
+    console.log("GET USER")
+    //state.info = getAuthUser();
+  }
+}
 
-function getAuthUser(){
+// actions
+const actions = {
+  //getAuthUser() // -> DISPATCHED once User has login => AUTH!!!
+  getUser({ commit }) {
+    commit(GET_USER)
+  }
+  /*
+  getAuthUser(){
 
-  var authUserID = 1; // TO DO -> get REAL CURRENT AUTH USER ID
+    console.log("=> STORE Module => getAuthUser ID / token / whatever...")
+    var authUserID = 1; // TO DO -> get REAL CURRENT AUTH USER ID
 
-  // URL for AXIOS API request to Express Server
-  var urlAPI = 'http://localhost:3000/api/v1.0/users/'+authUserID;
+    // URL for AXIOS API request to Express Server
+    var urlAPI = 'http://localhost:3000/api/v1.0/users/'+authUserID;
 
-  axios.get(urlAPI)
-    .then(function (response) {
-      state.info = response.data;
-      //console.log("AuthUser::",response.data);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+    axios.get(urlAPI)
+      .then(function (response) {
+        state.info = response.data;
+        //console.log("AuthUser::",response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
 
-};
+  }
+  */
+}
 
 export default {
   state,

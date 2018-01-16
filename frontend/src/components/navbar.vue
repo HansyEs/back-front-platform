@@ -1,6 +1,10 @@
 <template>
+  
   <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light" id="mainNav" v-if="isLoggedIn">
-    
+  <!-- if user is logged in
+  <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light" id="mainNav">  
+
+  -->
     <!-- Router link for SPA not refreshing -->
     <!--
       <router-link to="/">Home</router-link>
@@ -130,9 +134,14 @@
 <!-- END SEARCH -->
 
         <li class="nav-item">
-          <router-link to="/logout" tag="a" class="nav-link" title="Logout">
+          <a class="nav-link" title="Logout" @click="logout">
+            <i class="fa fa-fw fa-sign-out"></i>
+          </a>
+          <!--
+          <router-link to="/logout" tag="a" class="nav-link" title="Logout" @click="logout">
             <i class="fa fa-fw fa-sign-out"></i>
           </router-link>
+          -->
         </li>
 
       </ul>  
@@ -158,9 +167,17 @@ export default {
 
   computed: {
     isLoggedIn() {
-      var q = this.$store.getters.isLoggedIn;
+      //var q = this.$store.getters.isLoggedIn;
       //console.log(q)
-      return q;
+      //return q;
+      return this.$store.getters.isLoggedIn;
+    }
+  },
+
+  methods: {
+    logout(){
+      this.$store.dispatch('logout');
+      // auth.logout(); // ???
     }
   }
 

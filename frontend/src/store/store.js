@@ -24,7 +24,7 @@ const LOGOUT = "LOGOUT";
 const mutations = {
 	// synchronous transactions
     [LOGIN] (state) {
-      //state.pending = true;
+      //state.pending = true; // Show Spinner
     },
     [LOGIN_SUCCESS] (state) {
       state.authState = true;

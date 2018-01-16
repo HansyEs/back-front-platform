@@ -34,7 +34,6 @@ export default {
   created: function(){
 
     console.log('LOGIN::created');
-    console.log('AuthState::',this.$store.state.authState);
 
   },
 
@@ -49,7 +48,8 @@ export default {
           this.$store.dispatch('login'); // Change State in Store
           this.$router.replace(this.$route.query.redirect || '/') // If there is no redirect url send them to => '/'
         }
-      })
+      });
+      console.log('AuthState::',this.$store.state.authState);
     }
   }
 }

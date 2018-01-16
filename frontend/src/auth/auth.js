@@ -26,7 +26,8 @@ export default {
   },
 
   logout (cb) {
-    delete localStorage.token
+  	//console.log("Loggin out beees")
+  	delete localStorage.token
     if (cb) cb()
     this.onChange(false)
   },
