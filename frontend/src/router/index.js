@@ -18,27 +18,23 @@ export default new Router({
     {
       path: '/',
       name: 'Home',
-      component: Home // <- WELCOME
-      /* TO DO => AUTH => Add to secure URL
-      meta: { requiresAuth:true
-      }
-      */
+      component: Home, // <- WELCOME
+      beforeEnter: requireAuth 
+      //meta: { requireAuth:true } // TO DO => Use Global Guards for AUTH => router.beforeEach
     },
     {
       path: '/profile',
       name: 'Profile',
-      component: UserProfile
-      /* TO DO => AUTH => Add to secure URL
-      meta: { requiresAuth:true
-      }
-      */
+      component: UserProfile,
+      beforeEnter: requireAuth 
+      //meta: { requireAuth:true } // TO DO => Use Global Guards for AUTH => router.beforeEach
     },
     {
       path: '/organization',
       name: 'Organization',
       component: Organization,
-      //beforeEnter: requireAuth // TO DO => AUTH => Add to secure URL
-      meta: { requireAuth:true }
+      beforeEnter: requireAuth 
+      //meta: { requireAuth:true } // TO DO => Use Global Guards for AUTH => router.beforeEach
     },
     { path: '/logout',
       beforeEnter (to, from, next) {
@@ -54,21 +50,8 @@ export default new Router({
 // Check before each page load whether the page requires authentication/
 // if it does check whether the user is signed into the web app or
 // redirect to the sign-in page to enable them to sign-in
+// Find GLobal guards in => main.js
 
-/*
-Router.beforeEach((to, from, next) => {
-  if (!auth.loggedIn()) {
-    next({
-      path: '/login',
-      query: { redirect: to.fullPath }
-    })
-  } else {
-    next()
-  }
-});
-*/
-
-/*
 function requireAuth (to, from, next) {
   if (!auth.loggedIn()) {
     next({
@@ -79,4 +62,3 @@ function requireAuth (to, from, next) {
     next()
   }
 }
-*/

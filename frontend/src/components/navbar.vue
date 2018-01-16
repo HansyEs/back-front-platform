@@ -122,11 +122,6 @@
 <!-- END SEARCH -->
 
         <li class="nav-item">
-          <!--
-          <a href="./logout" class="nav-link" title="Logout" data-toggle="modal" data-target="#exampleModal">
-            <i class="fa fa-fw fa-sign-out"></i>
-          </a>
-          -->
           <router-link to="/logout" tag="a" class="nav-link" title="Logout">
             <i class="fa fa-fw fa-sign-out"></i>
           </router-link>
