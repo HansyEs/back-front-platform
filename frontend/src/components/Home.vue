@@ -31,29 +31,13 @@ export default {
 
   data() {
     return {
-      msg: '',
-      items: []
+      msg: ''
     }
   },
 
   created: function(){
 
     console.log('Home::created'); // useful for understanding the lifecycle
-
-    var that = this; // Saving this as that to keep access to all components
-
-    // AXIOS API request to Express Server
-    /*
-    axios.get('http://localhost:3000/api/items')
-      .then(function (response) {
-        //console.log(response);
-        that.items = response.data;
-      })
-      .catch(function (error) {
-        //console.log(error);
-        that.msg = error.data;
-      });
-    */
 
   }
 

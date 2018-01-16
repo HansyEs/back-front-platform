@@ -1,4 +1,4 @@
-console.log("STORE Module :: getAuthUser")
+console.log("=> STORE Module => getAuthUser ID / token / whatever...")
 
 const state = {
   info: getAuthUser() || ''
