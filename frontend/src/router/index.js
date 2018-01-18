@@ -44,8 +44,8 @@ export default new Router({
       }
     }
   ],
-  mode: 'history', // AVOID # from urls
-  history: true
+  mode: 'history' // AVOID # from urls
+  //history: true
 })
 
 // TO DO => AUTH => guard navigation
@@ -64,5 +64,5 @@ function requireAuth (to, from, next) {
   } else {
     next()
   }
-  console.log("Auth State ::",auth.loggedIn());
+  console.log(">> getterAuthState from ROUTER -->",auth.loggedIn());
 }

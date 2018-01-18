@@ -1,10 +1,10 @@
 <template>
-  
+   
   <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light" id="mainNav" v-if="isLoggedIn">
-  <!-- if user is logged in
+<!-- if user is logged in 
   <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light" id="mainNav">  
-
-  -->
+-->
+  
     <!-- Router link for SPA not refreshing -->
     <!--
       <router-link to="/">Home</router-link>
@@ -166,8 +166,8 @@ export default {
 
   computed: {
     isLoggedIn() {
-      var getterAuthState = this.$store.getters.isLoggedIn;
-      console.log("getterAuthState from navbar component -->",getterAuthState)
+      var getterAuthState = this.$store.getters.isLoggedIn; // Getters to Keep it Alive!
+      console.log(">> getterAuthState from navbar component -->",getterAuthState)
       return getterAuthState;
     }
   }

@@ -48,7 +48,7 @@ export default {
           this.$router.replace(this.$route.query.redirect || '/') // If there is no redirect url send them to => '/'
         }
       });
-      console.log('AuthState::',this.$store.state.authState);
+      console.log('>> getterAuthState from Login component -->',this.$store.state.authState);
     }
   }
 }

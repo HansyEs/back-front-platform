@@ -35,6 +35,7 @@ export default {
   },
 
   loggedIn () {
+    store.dispatch('login')
     return !!localStorage.token
   },
 
