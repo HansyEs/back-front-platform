@@ -17,8 +17,7 @@ export default new Router({
     },
     {
       path: '*', // ROUTES that doesn't exist
-      name: '/',
-      beforeEnter: requireAuth 
+      redirect: '/'
     },
     {
       path: '/',

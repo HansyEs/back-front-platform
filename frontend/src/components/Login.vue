@@ -33,7 +33,7 @@ export default {
 
   created: function(){
 
-    console.log('LOGIN::created');
+    console.log('[COMP CREATED]::LOGIN');
 
   },
 

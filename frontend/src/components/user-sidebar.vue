@@ -46,7 +46,7 @@ export default {
   },
 
   created: function(){
-
+    //console.log('[COMP CREATED]::user-sidebar');
   }
 
 }

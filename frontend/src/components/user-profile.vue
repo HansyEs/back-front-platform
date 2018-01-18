@@ -67,7 +67,7 @@ export default {
   },
 
   created: function(){
-    console.log('User Profile::created'); // useful for understanding the lifecycle
+    console.log('[COMP CREATED]::User Profile'); // useful for understanding the lifecycle
   }
 
 }

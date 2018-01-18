@@ -161,6 +161,7 @@ export default {
   },
 
   created: function(){
+    console.log('[COMP CREATED]::Navbar');
   },
 
   computed: {
