@@ -16,25 +16,27 @@ export default new Router({
       component: Login // <- LOGIN
     },
     {
+      path: '*', // ROUTES that doesn't exist
+      name: '/',
+      beforeEnter: requireAuth 
+    },
+    {
       path: '/',
       name: 'Home',
       component: Home, // <- WELCOME
       beforeEnter: requireAuth 
-      //meta: { requireAuth:true } // TO DO => Use Global Guards for AUTH => router.beforeEach
     },
     {
       path: '/profile',
       name: 'Profile',
       component: UserProfile,
       beforeEnter: requireAuth 
-      //meta: { requireAuth:true } // TO DO => Use Global Guards for AUTH => router.beforeEach
     },
     {
       path: '/organization',
       name: 'Organization',
       component: Organization,
       beforeEnter: requireAuth 
-      //meta: { requireAuth:true } // TO DO => Use Global Guards for AUTH => router.beforeEach
     },
     { path: '/logout',
       beforeEnter (to, from, next) {
@@ -43,7 +45,8 @@ export default new Router({
       }
     }
   ],
-  mode: 'history' // AVOID # from urls
+  mode: 'history', // AVOID # from urls
+  history: true
 })
 
 // TO DO => AUTH => guard navigation
@@ -51,7 +54,8 @@ export default new Router({
 // if it does check whether the user is signed into the web app or
 // redirect to the sign-in page to enable them to sign-in
 // Find GLobal guards in => main.js
-
+// TO DO => Global Guards
+/// meta: { requireAuth:true } => router.beforeEach
 function requireAuth (to, from, next) {
   if (!auth.loggedIn()) {
     next({
@@ -61,4 +65,5 @@ function requireAuth (to, from, next) {
   } else {
     next()
   }
+  console.log("Auth State ::",auth.loggedIn());
 }

@@ -7,11 +7,12 @@ Vue.use(Vuex);
 
 const state = {
     count: 0, // demo purposes
-    authState: false
+    authState: false // Initial Auth State
 };
 
 const getters = {
 	isLoggedIn: state => {
+		console.log("getterAuthState from STORE     getter -->",state.authState)
     	return state.authState
    }
 };
@@ -28,12 +29,10 @@ const mutations = {
     },
     [LOGIN_SUCCESS] (state) {
       state.authState = true;
-      //state.pending = false;
-      console.log("DISPATCHED :: LOGIN")
+      //state.pending = false; // Show Spinner
     },
     [LOGOUT](state) {
       state.authState = false;
-      console.log("DISPATCHED :: LOGOUT")
     }
 };
 
@@ -41,6 +40,7 @@ const actions = {
 
 	// AUTH actions
 	login({ commit }, creds) {
+		console.log("[ACTION] dispatched --> LOGIN")
 		commit(LOGIN_SUCCESS); // Mutation
 		/*
 		commit(LOGIN); // show spinner
@@ -54,11 +54,8 @@ const actions = {
 		*/
 	},
 	logout({ commit }) {
+		console.log("[ACTION] dispatched --> LOGOUT")
 		commit(LOGOUT); // Mutation
-		/*
-		localStorage.removeItem("token");
-		commit(LOGOUT);
-		*/
 	}
 	// END AUTH actions
 };

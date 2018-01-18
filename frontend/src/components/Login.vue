@@ -41,7 +41,6 @@ export default {
     login () {
       auth.login(this.email, this.pass, loggedIn => {
         if (!loggedIn) {
-          //this.$store.dispatch('logout');
           console.log("ERROR :: TO DO => style error message");
           this.error = true
         } else {

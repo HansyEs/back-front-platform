@@ -134,14 +134,10 @@
 <!-- END SEARCH -->
 
         <li class="nav-item">
-          <a class="nav-link" title="Logout" @click="logout">
-            <i class="fa fa-fw fa-sign-out"></i>
-          </a>
-          <!--
-          <router-link to="/logout" tag="a" class="nav-link" title="Logout" @click="logout">
+          <router-link to="/logout" tag="a" class="nav-link" title="Logout">
             <i class="fa fa-fw fa-sign-out"></i>
           </router-link>
-          -->
+          
         </li>
 
       </ul>  
@@ -151,6 +147,8 @@
 </template>
 
 <script>
+
+import auth from '@/auth/auth'
 
 export default {
 
@@ -167,17 +165,9 @@ export default {
 
   computed: {
     isLoggedIn() {
-      //var q = this.$store.getters.isLoggedIn;
-      //console.log(q)
-      //return q;
-      return this.$store.getters.isLoggedIn;
-    }
-  },
-
-  methods: {
-    logout(){
-      this.$store.dispatch('logout');
-      // auth.logout(); // ???
+      var getterAuthState = this.$store.getters.isLoggedIn;
+      console.log("getterAuthState from navbar component -->",getterAuthState)
+      return getterAuthState;
     }
   }
 

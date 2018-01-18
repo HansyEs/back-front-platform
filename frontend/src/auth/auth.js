@@ -1,6 +1,8 @@
 // AUTH helper
 /* globals localStorage */
 
+import store from '@/store/store'
+
 export default {
   login (email, pass, cb) {
     cb = arguments[arguments.length - 1]
@@ -26,9 +28,9 @@ export default {
   },
 
   logout (cb) {
-  	//console.log("Loggin out beees")
-  	delete localStorage.token
-    if (cb) cb()
+    delete localStorage.token
+    store.dispatch('logout')
+    if (cb) cb() 
     this.onChange(false)
   },
 
