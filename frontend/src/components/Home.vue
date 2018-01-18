@@ -37,7 +37,7 @@ export default {
 
   created: function(){
 
-    console.log('[COMP CREATED]::Home'); // useful for understanding the lifecycle
+    //console.log('[COMP CREATED]::Home'); // useful for understanding the lifecycle
 
   }
 

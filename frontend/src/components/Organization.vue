@@ -106,7 +106,7 @@ export default {
 
   created: function(){
 
-    console.log('[COMP CREATED]::Organization'); // useful for understanding the lifecycle
+    //console.log('[COMP CREATED]::Organization'); // useful for understanding the lifecycle
 
     var that = this; // Saving this as that to keep access to all components
 

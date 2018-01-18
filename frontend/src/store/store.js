@@ -12,7 +12,8 @@ const state = {
 
 const getters = {
 	isLoggedIn: state => {
-		console.log(">> getterAuthState from STORE     getter -->",state.authState)
+		//console.log(">> getterAuthState from STORE     getter -->",state.authState)
+		console.log("Auth State::",state.authState)
     	return state.authState
    }
 };

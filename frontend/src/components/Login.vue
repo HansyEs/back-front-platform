@@ -33,7 +33,7 @@ export default {
 
   created: function(){
 
-    console.log('[COMP CREATED]::LOGIN');
+    //console.log('[COMP CREATED]::LOGIN');
 
   },
 
@@ -44,11 +44,11 @@ export default {
           console.log("ERROR :: TO DO => style error message");
           this.error = true
         } else {
-          this.$store.dispatch('login'); // Change State in Store
+          //this.$store.dispatch('login'); // Action dispatch from auth.js -> loggedIn() to keep getter alive!
           this.$router.replace(this.$route.query.redirect || '/') // If there is no redirect url send them to => '/'
         }
       });
-      console.log('>> getterAuthState from Login component -->',this.$store.state.authState);
+      //console.log('>> getterAuthState from Login component -->',this.$store.state.authState);
     }
   }
 }

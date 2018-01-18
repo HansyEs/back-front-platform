@@ -64,5 +64,5 @@ function requireAuth (to, from, next) {
   } else {
     next()
   }
-  console.log(">> getterAuthState from ROUTER -->",auth.loggedIn());
+  //console.log(">> getterAuthState from ROUTER -->",auth.loggedIn());
 }
