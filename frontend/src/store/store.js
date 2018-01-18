@@ -21,6 +21,7 @@ const getters = {
 // AUTH Mutations
 const LOGIN = "LOGIN";
 const LOGIN_SUCCESS = "LOGIN_SUCCESS";
+const LOGGEDIN = "LOGGEDIN";
 const LOGOUT = "LOGOUT";
 
 const mutations = {
@@ -28,9 +29,12 @@ const mutations = {
     [LOGIN] (state) {
       //state.pending = true; // Show Spinner
     },
+    [LOGGEDIN] (state) {
+      state.authState = true;
+    },
     [LOGIN_SUCCESS] (state) {
       state.authState = true;
-      //state.pending = false; // Show Spinner
+      //state.pending = false; // HIDE Spinner
     },
     [LOGOUT](state) {
       state.authState = false;
@@ -53,6 +57,9 @@ const actions = {
 		}, 1000);
 		});
 		*/
+	},
+	logedin({ commit }, creds) {
+		commit(LOGGEDIN); // Mutation
 	},
 	logout({ commit }) {
 		console.log("[ACTION] dispatched --> LOGOUT")

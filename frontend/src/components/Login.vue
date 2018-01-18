@@ -44,7 +44,7 @@ export default {
           console.log("ERROR :: TO DO => style error message");
           this.error = true
         } else {
-          //this.$store.dispatch('login'); // Action dispatch from auth.js -> loggedIn() to keep getter alive!
+          this.$store.dispatch('login'); // Action dispatch from auth.js -> loggedIn() to keep getter alive!
           this.$router.replace(this.$route.query.redirect || '/') // If there is no redirect url send them to => '/'
         }
       });
