@@ -134,9 +134,9 @@
 <!-- END SEARCH -->
 
         <li class="nav-item">
-          <router-link to="/logout" tag="a" class="nav-link" title="Logout">
+          <a @click="logout" tag="a" class="nav-link" title="Logout">
             <i class="fa fa-fw fa-sign-out"></i>
-          </router-link>
+          </a>
           
         </li>
 
@@ -147,8 +147,6 @@
 </template>
 
 <script>
-
-import auth from '@/auth/auth'
 
 export default {
 
@@ -166,9 +164,18 @@ export default {
 
   computed: {
     isLoggedIn() {
-      var getterAuthState = this.$store.getters.isLoggedIn; // Getters to Keep it Alive!
-      //console.log("EO!",this.$store.state.getAuthState.info);
+      var getterAuthState = this.$store.state.auth.isLoggedIn;
+      //console.log(this.$store.state.auth.isLoggedIn)
       return getterAuthState;
+    }
+  },
+
+  methods: {
+    logout() {
+      this.$store.dispatch('auth/logout');
+      if(!this.isLoggedIn){
+        this.$router.replace('/login');
+      }
     }
   }
 

@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import auth from '@/auth/auth'
 import Login from '@/components/Login';
+import store from '@/store/store';
 import Home from '@/components/Home';
 import UserProfile from '@/components/user-profile';
 import Organization from '@/components/Organization';
@@ -39,7 +39,7 @@ export default new Router({
     },
     { path: '/logout',
       beforeEnter (to, from, next) {
-        auth.logout()
+        store.dispatch('auth/logout');
         next('/login') // Redirect to
       }
     }
@@ -56,7 +56,13 @@ export default new Router({
 // TO DO => Global Guards
 /// meta: { requireAuth:true } => router.beforeEach
 function requireAuth (to, from, next) {
-  if (!auth.loggedIn()) {
+
+  //console.log("[NAVIGATION GUARD] => REQUIRING AUTH");
+
+  var authed = store.state.auth.isLoggedIn;
+
+  if(!authed){
+    console.log("Auth out!");
     next({
       path: '/login',
       query: { redirect: to.fullPath }
@@ -64,5 +70,7 @@ function requireAuth (to, from, next) {
   } else {
     next()
   }
-  //console.log(">> getterAuthState from ROUTER -->",auth.loggedIn());
+  
+  //console.log(">> getterAuthState from ROUTER -->",store.state.auth.isLoggedIn);
+
 }

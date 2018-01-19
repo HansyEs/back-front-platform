@@ -17,8 +17,6 @@
 
 <script>
 
-import auth from '@/auth/auth'
-
 export default {
 
   name: "Login",
@@ -39,6 +37,14 @@ export default {
 
   methods: {
     login () {
+      this.$store.dispatch("auth/login", {
+        email: this.email,
+        password: this.password
+      }).then(() => {
+        this.$router.replace(this.$route.query.redirect || '/') // If there is no redirect url send them to => '/'
+        //this.$router.push("/")
+      });
+      /*
       auth.login(this.email, this.pass, loggedIn => {
         if (!loggedIn) {
           console.log("ERROR :: TO DO => style error message");
@@ -49,6 +55,7 @@ export default {
         }
       });
       //console.log('>> getterAuthState from Login component -->',this.$store.state.authState);
+      */
     }
   }
 }

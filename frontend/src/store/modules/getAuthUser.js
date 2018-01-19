@@ -17,26 +17,12 @@ const getters = {
 const GET_AUTH_USER = "GET_AUTH_USER";
 
 const mutations = {
+
   [GET_AUTH_USER](state) {
-    state.info = "FETCHED Auth User Info";
-    console.log("[MUTATION] GAU ::",state.info);
-    //state.info = getAuthUser();
-  }
-}
 
-// actions
-const actions = {
-  //getAuthUser() // -> DISPATCHED once User has login => AUTH!!!
-  /*
-  getAuthUser({ commit }) {
-    console.log("[ACTION]   GAU :: Getting Auth User Info");
-    commit(GET_AUTH_USER)
-  }
-  */
-  getAuthUser({ commit }) {
-
-   // getAuthUser ID / token / whatever...
-    console.log("[ACTION]   GAU :: Getting Auth User Info");
+    // getAuthUser ID / token / whatever...
+    console.log("[MUTATION] GAU ::Getting Auth User Info");
+    //console.log("EO",rootState);
 
     var authUserID = 1; // TO DO -> get REAL CURRENT AUTH USER ID
 
@@ -52,8 +38,17 @@ const actions = {
         console.log(error);
       });
 
-    commit(GET_AUTH_USER);
+    //console.log("[MUTATION] GAU ::",state.info);
 
+  }
+}
+
+// actions
+const actions = {
+  //getAuthUser() // -> DISPATCHED once User has loggedin 
+  getAuthUser({ commit }) {
+    //console.log("[ACTION]   GAU :: Getting Auth User Info");
+    commit(GET_AUTH_USER);
   }
   
 }

@@ -61,13 +61,13 @@ export default {
 
   computed: {
     user () {
-      //return this.$store.state.count // from -> ./store/store.js
-      return this.$store.state.getAuthUser.info; // from -> ./store/getAuthUser module
+      //console.log("Auth User Info =",this.$store.state.auth.userInfo)
+      return this.$store.state.auth.userInfo; // from -> ./store/module/auth
     }
   },
 
   created: function(){
-    console.log('[COMP CREATED]::User Profile'); // useful for understanding the lifecycle
+    //console.log('[COMP CREATED]::User Profile'); // useful for understanding the lifecycle
   }
 
 }

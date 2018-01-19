@@ -39,9 +39,8 @@ export default {
 
   computed: {
     user () {
-      //return this.$store.state.count // from -> ./store/store.js
-      return this.$store.state.getAuthUser.info; // from -> ./store/getAuthUser module
-      //return this.$store.state.getAuthUser.dispatch('getUser'); // from -> ./store/getAuthUser module
+      console.log("Auth User Info =",this.$store.state.auth.userInfo)
+      return this.$store.state.auth.userInfo; // from -> ./store/module/auth
     }
   },
 
