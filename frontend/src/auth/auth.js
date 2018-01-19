@@ -35,7 +35,7 @@ export default {
   },
 
   loggedIn () {
-    store.dispatch('logedin')
+    store.dispatch('loggedin')
     return !!localStorage.token
   },
 
@@ -44,7 +44,7 @@ export default {
 
 function pretendRequest (email, pass, cb) {
   setTimeout(() => {
-    if (email === 'joe@example.com' && pass === 'password1') {
+    if (email === 'joe@example.com' && pass === 'p') {
       cb({
         authenticated: true,
         token: Math.random().toString(36).substring(7)

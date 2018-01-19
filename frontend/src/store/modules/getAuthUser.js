@@ -2,18 +2,24 @@
 import axios from 'axios';
 
 const state = {
-  info: '' // Initial State
+  info: 'AUTH USER INFO EMPTY' // Initial State
 }
 
 // getters
-const getters = {}
+const getters = {
+  authUserInfo: state => {
+    console.log("[GETTER]   GAU ::",state.info);
+    return state.info; // RETURN Auth User data
+   }
+}
 
 // mutations
-const GET_USER = "GET_USER";
+const GET_AUTH_USER = "GET_AUTH_USER";
 
 const mutations = {
-  [GET_USER](state) {
-    console.log("GET USER")
+  [GET_AUTH_USER](state) {
+    state.info = "FETCHED Auth User Info";
+    console.log("[MUTATION] GAU ::",state.info);
     //state.info = getAuthUser();
   }
 }
@@ -21,13 +27,17 @@ const mutations = {
 // actions
 const actions = {
   //getAuthUser() // -> DISPATCHED once User has login => AUTH!!!
-  getUser({ commit }) {
-    commit(GET_USER)
-  }
   /*
-  getAuthUser(){
+  getAuthUser({ commit }) {
+    console.log("[ACTION]   GAU :: Getting Auth User Info");
+    commit(GET_AUTH_USER)
+  }
+  */
+  getAuthUser({ commit }) {
 
-    console.log("=> STORE Module => getAuthUser ID / token / whatever...")
+   // getAuthUser ID / token / whatever...
+    console.log("[ACTION]   GAU :: Getting Auth User Info");
+
     var authUserID = 1; // TO DO -> get REAL CURRENT AUTH USER ID
 
     // URL for AXIOS API request to Express Server
@@ -42,11 +52,14 @@ const actions = {
         console.log(error);
       });
 
+    commit(GET_AUTH_USER);
+
   }
-  */
+  
 }
 
 export default {
+  namespaced: true,
   state,
   getters,
   actions,

@@ -167,7 +167,7 @@ export default {
   computed: {
     isLoggedIn() {
       var getterAuthState = this.$store.getters.isLoggedIn; // Getters to Keep it Alive!
-      //console.log(">> getterAuthState from navbar component -->",getterAuthState)
+      //console.log("EO!",this.$store.state.getAuthState.info);
       return getterAuthState;
     }
   }

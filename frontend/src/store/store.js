@@ -7,7 +7,8 @@ Vue.use(Vuex);
 
 const state = {
     count: 0, // demo purposes
-    authState: false // Initial Auth State
+    authState: false, // Initial Auth State
+    authToken: ''
 };
 
 const getters = {
@@ -46,6 +47,7 @@ const actions = {
 	// AUTH actions
 	login({ commit }, creds) {
 		console.log("[ACTION] dispatched --> LOGIN")
+		this.dispatch( 'getAuthUser/getAuthUser'); // Get auth user info from Module!!!
 		commit(LOGIN_SUCCESS); // Mutation
 		/*
 		commit(LOGIN); // show spinner
@@ -58,7 +60,7 @@ const actions = {
 		});
 		*/
 	},
-	logedin({ commit }, creds) {
+	loggedin({ commit }, creds) {
 		commit(LOGGEDIN); // Mutation
 	},
 	logout({ commit }) {
