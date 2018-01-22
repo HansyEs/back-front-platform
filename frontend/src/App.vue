@@ -1,6 +1,6 @@
 <template>
 
-  <div id="app" class="talentooAdmin" >
+  <div id="app" class="talentooAdmin" v-bind:class="{ loginView: !isLoggedIn }">
 
     <!-- TO DO => if(user.auth()) -> v-if -->
     <navbar></navbar>
@@ -37,6 +37,21 @@ export default {
 
   data() {
     return {
+    }
+  },
+
+  computed: {
+    /*
+    isLoggedIn() {
+      var getterAuthState = this.$store.state.auth.isLoggedIn;
+      //console.log(this.$store.state.auth.isLoggedIn)
+      return getterAuthState;
+    }
+    */
+    isLoggedIn: function () {
+      var getterAuthState = this.$store.state.auth.isLoggedIn;
+      //console.log(this.$store.state.auth.isLoggedIn)
+      return getterAuthState;
     }
   },
 

@@ -4,7 +4,6 @@ import Vuex from 'vuex';
 Vue.use(Vuex);
 
 // STORE EXAMPLES
-
 const state = {
     count: 0 // 
 };

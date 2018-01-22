@@ -39,7 +39,7 @@ export default {
 
   computed: {
     user () {
-      console.log("Auth User Info =",this.$store.state.auth.userInfo)
+      //console.log("Auth User Info =",this.$store.state.auth.userInfo)
       return this.$store.state.auth.userInfo; // from -> ./store/module/auth
     }
   },

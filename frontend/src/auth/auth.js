@@ -1,6 +1,5 @@
 // AUTH helper
 /* globals localStorage */
-
 import store from '@/store/store'
 
 export default {

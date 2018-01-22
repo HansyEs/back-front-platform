@@ -27,8 +27,9 @@ const mutations = {
 
   [LOGIN_SUCCESS](state,token) {
 
-    // MAKE AJAX CALL TO GET USER INFO
-    console.log("LOGIN_SUCCESS AJAX CALL",token)
+    // LOGIN SUCCESS
+    // GET AUTH USER INFO
+    console.log("LOGIN_SUCCESS >> AJAX CALL id:",token)
     var authUserID = token; // TO DO -> get REAL CURRENT AUTH USER ID
         authUserID = 1; // For prototype purposes
 
@@ -50,6 +51,7 @@ const mutations = {
 
   [LOGOUT](state) {
     state.isLoggedIn = false;
+    // TO DO => disconnect user from server
   }  
 }
 
@@ -64,6 +66,7 @@ const actions = {
     commit(LOGIN); // show spinner
     return new Promise(resolve => {
       // Simulate asynchronous operation
+      // // TO DO -> state.authError = error;
       setTimeout(() => {
         var token = Math.random().toString(36).substring(7)
         localStorage.setItem("token", token);

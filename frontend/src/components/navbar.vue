@@ -164,9 +164,9 @@ export default {
 
   computed: {
     isLoggedIn() {
-      var getterAuthState = this.$store.state.auth.isLoggedIn;
+      var getAuthState = this.$store.state.auth.isLoggedIn;
       //console.log(this.$store.state.auth.isLoggedIn)
-      return getterAuthState;
+      return getAuthState;
     }
   },
 
@@ -174,7 +174,7 @@ export default {
     logout() {
       this.$store.dispatch('auth/logout');
       if(!this.isLoggedIn){
-        this.$router.replace('/login');
+        this.$router.replace('/login'); // If auth state false redirect to login
       }
     }
   }

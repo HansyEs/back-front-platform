@@ -12,10 +12,40 @@
 
 	&.talentooAdmin {
 
+
+		&.loginView {
+
+			.content-wrapper {
+
+				margin-left: 0;
+				width: 100%;
+				margin-top: -56px;
+				min-height: calc(100vh - 56px);
+
+			}
+
+			footer {
+				width: 100%;
+				margin-left: 0;
+				.container {
+					max-width: 100%;
+				}
+			}
+
+		}
+
 		a {
 
 			&:hover {
 				text-decoration: none;
+			}
+
+		}
+
+		button {
+
+			&:hover {
+				cursor: pointer !important;
 			}
 
 		}

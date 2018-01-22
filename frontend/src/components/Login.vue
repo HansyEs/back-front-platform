@@ -1,14 +1,14 @@
 <template>
-  <div class="container-fluid">
+  <div id="login-view" class="container-fluid">
     <h2>Login</h2>
-    
+  
     <p v-if="$route.query.redirect">
       You need to login first.
     </p>
-    <form @submit.prevent="login">
-      <label><input v-model="email" placeholder="email"></label>
-      <label><input v-model="pass" placeholder="password" type="password"></label> (hint: password1)<br>
-      <button type="submit">login</button>
+    <form class="" @submit.prevent="login">
+      <label><input class="form-control" v-model="email" placeholder="email"></label>
+      <label><input class="form-control" v-model="pass" placeholder="password = p" type="password"></label><br>
+      <button class="btn btn-primary" type="submit">login</button>
       <p v-if="error" class="error">Bad login information</p>
     </form>
     
@@ -65,6 +65,5 @@ export default {
 <!-- If not used please comment -->
 <!--
 <style lang="scss" scoped>
-/* LOGIN SCOPED STYLES */
 </style>
 -->
