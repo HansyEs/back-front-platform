@@ -52,6 +52,7 @@ app.get('/api/v1.0/users_test/:id?/:page?/:howmany?',function(req,res){
 
 app.get('/api/v1.0/users/:id?',function(req,res){
     // Tiene derechos???
+    //console.log("ESTOY AQUI");
     var response;
     var status = 200;
     var found=false;
@@ -63,8 +64,8 @@ app.get('/api/v1.0/users/:id?',function(req,res){
             }
         });
         if (!found){
+            // If status 204 data will be empty hagamos lo que hagamos!
             status = 204;
-            response = {error:"User not Found"};
         }
     } else {
         response = users;
