@@ -29,7 +29,7 @@ const mutations = {
 
     // LOGIN SUCCESS
     // GET AUTH USER INFO
-    console.log("LOGIN_SUCCESS >> AJAX CALL id:",token)
+    console.log("LOGIN_SUCCESS >> AJAX CALL token:",token)
     var authUserID = token; // TO DO -> get REAL CURRENT AUTH USER ID
         authUserID = 1; // For prototype purposes
 

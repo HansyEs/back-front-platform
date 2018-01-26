@@ -68,13 +68,13 @@ router.beforeEach((to, from, next) => {
   var a = authState; // User Auth State => Need to be persistent to avoid page reloads problems
   
 
-  if(r === true && authState === true) {
+  if(r === true && authState) {
 
     console.log("[ROUTER] case 1 =>","r:",r,"a:",a);
     // App content
     next(); // Keep goint to url
 
-  } else if(r === false) {
+  } else if(r === false && !authState) {
 
     console.log("[ROUTER] case 2 =>","r:",r,"a:",a);
     // 'logout'
