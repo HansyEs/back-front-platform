@@ -159,13 +159,14 @@ export default {
   },
 
   created: function(){
-    console.log('[COMP CREATED]::Navbar');
+    //console.log('[COMP CREATED]::Navbar');
   },
 
   computed: {
     isLoggedIn() {
-      var getAuthState = this.$store.state.auth.isLoggedIn;
-      //console.log(this.$store.state.auth.isLoggedIn)
+      //var getAuthState = this.$store.state.auth.isLoggedIn; // BETTER use GETTERS for persistent state
+      var getAuthState = this.$store.getters["auth/isLoggedIn"];
+      //console.log("GETTER authState =",getAuthState)
       return getAuthState;
     }
   },

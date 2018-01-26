@@ -1,6 +1,6 @@
 <template>
   <div id="login-view" class="container-fluid">
-    
+
     <h2 class="mb-m">Login</h2>
   
     <form class="" @submit.prevent="login">
@@ -44,13 +44,20 @@ export default {
 
   methods: {
     login () {
+
+      //console.log("dispatching");
       this.$store.dispatch("auth/login", {
         email: this.email,
         password: this.password
+
       }).then(() => {
-        this.$router.replace(this.$route.query.redirect || '/') // If there is no redirect url send them to => '/'
-        //this.$router.push("/")
+
+        console.log("login resolved");
+        this.$router.replace(this.$route.query.redirect || '/')
+        // If there is no redirect url send them to => '/'
+
       });
+      
       /*
       auth.login(this.email, this.pass, loggedIn => {
         if (!loggedIn) {
@@ -63,6 +70,7 @@ export default {
       });
       //console.log('>> getterAuthState from Login component -->',this.$store.state.authState);
       */
+
     }
   }
 }

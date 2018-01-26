@@ -61,32 +61,37 @@ router.beforeEach((to, from, next) => {
 
   //console.log("[GLOBAL NAVIGATION GUARD] => REQUIRING AUTH");
   
+  // Does this url need auth to be shown?
   const requiresAuth = to.matched.some( record => record.meta.requiresAuth);
-  var r = requiresAuth; // Does this url need auth to be shown?
-
+  // User Auth State => Need to be persistent to avoid page reloads problems
   const authState = store.state.auth.isLoggedIn;
-  var a = authState; // User Auth State => Need to be persistent to avoid page reloads problems
-  
 
-  if(r === true && authState) {
+  var r = requiresAuth;
+  var a = authState;
+  var c;
 
-    console.log("[ROUTER] case 1 =>","r:",r,"a:",a);
+  if(requiresAuth === true && authState) {
+
+    c = 1;
     // App content
     next(); // Keep goint to url
 
-  } else if(r === false && !authState) {
+  } else if(requiresAuth === true && !authState) {
 
-    console.log("[ROUTER] case 2 =>","r:",r,"a:",a);
+    c = 2;
+    console.log("- - - - - - - -\nWeird case. App should never get here\nTODO => persistent auth user state.\n- - - - - - - -");
+    next('/login'); // Redirect to login for prototype purposes
+
+  } else if(requiresAuth === false && !authState) {
+
+    c = 3;
     // 'logout'
     // 'login'
     next(); // Keep goint to url
 
-  } else {
-
-    console.log("[ROUTER] case 3 =>","r:",r,"a:",a);
-    next('login'); // Keep goint to url
-
   }
+
+  console.log("[ROUTER] case",c,"=>","r:",r,"a:",a);
 
 })
 
