@@ -1,0 +1,31 @@
+.content-wrapper {
+
+	#login-view {
+
+		max-width: 300px;
+		margin: 0 auto;
+		margin-top: 30px;
+
+		form {
+
+			label {
+
+				width: 100%;
+
+				input {
+					width: 100%;
+				}
+
+			}
+
+		}
+
+		button {
+			display: inline-block;
+			margin: 0 auto;
+			width: 100%;
+		}
+
+	}
+
+}

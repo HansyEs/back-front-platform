@@ -1,16 +1,23 @@
 <template>
   <div id="login-view" class="container-fluid">
-    <h2>Login</h2>
+    
+    <h2 class="mb-m">Login</h2>
   
-    <p v-if="$route.query.redirect">
-      You need to login first.
-    </p>
     <form class="" @submit.prevent="login">
       <label><input class="form-control" v-model="email" placeholder="email"></label>
       <label><input class="form-control" v-model="pass" placeholder="password = p" type="password"></label><br>
-      <button class="btn btn-primary" type="submit">login</button>
-      <p v-if="error" class="error">Bad login information</p>
+      <div class="text-center mt-m">
+        <button class="btn btn-primary" type="submit">login</button>
+      </div>
+      <div class="text-right mt-m">
+        <a href="">Forgot your password?</a>
+      </div>
     </form>
+
+    <div class="col-sm-12 feedback">
+      <p v-if="$route.query.redirect">You need to login first.</p>
+      <p v-if="error" class="error">Bad login information</p>
+    </div>
     
   </div>
 </template>
