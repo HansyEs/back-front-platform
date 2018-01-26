@@ -8,7 +8,8 @@ import Organization from '@/components/Organization';
 
 Vue.use(Router)
 
-export default new Router({
+//export default new Router({
+const router = new Router({
   routes: [
     {
       path: '/login',
@@ -23,19 +24,25 @@ export default new Router({
       path: '/',
       name: 'Home',
       component: Home, // <- WELCOME
-      beforeEnter: requireAuth 
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/profile',
       name: 'Profile',
       component: UserProfile,
-      beforeEnter: requireAuth 
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/organization',
       name: 'Organization',
       component: Organization,
-      beforeEnter: requireAuth 
+      meta: {
+        requiresAuth: true
+      }
     },
     { path: '/logout',
       beforeEnter (to, from, next) {
@@ -44,33 +51,43 @@ export default new Router({
       }
     }
   ],
-  mode: 'history' // AVOID # from urls
-  //history: true
+  mode: 'history', // AVOID # from urls
+  history: true
 })
 
-// TO DO => AUTH => guard navigation
-// Check before each page load whether the page requires authentication/
-// if it does check whether the user is signed into the web app or
-// redirect to the sign-in page to enable them to sign-in
-// Find GLobal guards in => main.js
-// TO DO => Global Guards
-/// meta: { requireAuth:true } => router.beforeEach
-function requireAuth (to, from, next) {
+// TO DO => AUTH
+// Global Guards
+router.beforeEach((to, from, next) => {
 
-  //console.log("[NAVIGATION GUARD] => REQUIRING AUTH");
-
-  var authed = store.state.auth.isLoggedIn;
-
-  if(!authed){
-    console.log("Auth out!");
-    next({
-      path: '/login',
-      query: { redirect: to.fullPath }
-    })
-  } else {
-    next()
-  }
+  //console.log("[GLOBAL NAVIGATION GUARD] => REQUIRING AUTH");
   
-  //console.log(">> getterAuthState from ROUTER -->",store.state.auth.isLoggedIn);
+  const requiresAuth = to.matched.some( record => record.meta.requiresAuth);
+  var r = requiresAuth; // Does this url need auth to be shown?
 
-}
+  const authState = store.state.auth.isLoggedIn;
+  var a = authState; // User Auth State => Need to be persistent to avoid page reloads problems
+  
+
+  if(r === true && authState === true) {
+
+    console.log("[ROUTER] case 1 =>","r:",r,"a:",a);
+    // App content
+    next(); // Keep goint to url
+
+  } else if(r === false) {
+
+    console.log("[ROUTER] case 2 =>","r:",r,"a:",a);
+    // 'logout'
+    // 'login'
+    next(); // Keep goint to url
+
+  } else {
+
+    console.log("[ROUTER] case 3 =>","r:",r,"a:",a);
+    next('login'); // Keep goint to url
+
+  }
+
+})
+
+export default router;
