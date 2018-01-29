@@ -39,8 +39,9 @@ export default {
 
   computed: {
     user () {
-      //console.log("Auth User Info =",this.$store.state.auth.userInfo)
-      return this.$store.state.auth.userInfo; // from -> ./store/module/auth
+      var userData = this.$store.getters['getAuthUser/authUserInfo'];
+      //console.log("[COMPONENT :: user-sidebar] Auth User Info =",userData)
+      return userData; // from -> ./store/module/getAuthUser
     }
   },
 

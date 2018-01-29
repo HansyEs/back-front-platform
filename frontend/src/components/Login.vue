@@ -14,7 +14,7 @@
       </div>
     </form>
 
-    <div class="col-sm-12 feedback">
+    <div class="col-sm-12 mt-m text-center feedback">
       <p v-if="$route.query.redirect">You need to login first.</p>
       <p v-if="error" class="error">Bad login information</p>
     </div>

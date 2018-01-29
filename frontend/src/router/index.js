@@ -80,14 +80,20 @@ router.beforeEach((to, from, next) => {
 
     c = 2;
     console.log("- - - - - - - -\nWeird case. App should never get here\nTODO => persistent auth user state.\n- - - - - - - -");
-    next('/login'); // Redirect to login for prototype purposes
+    //next('/login'); // Redirect to login for prototype purposes
+    next({
+      path: 'login',
+      query: { redirect: to.fullPath }
+    });
 
   } else if(requiresAuth === false && !authState) {
 
     c = 3;
     // 'logout'
     // 'login'
-    next(); // Keep goint to url
+    next({
+      query: { redirect: to.fullPath } // Keep url user was trying to get
+    });
 
   }
 

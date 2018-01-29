@@ -23,8 +23,8 @@ const actions = {
 // END STORE EXAMPLES
 
 // IMPORT STORE MODULES
-import auth from './modules/auth' // GET AUTH USER module
-//import getAuthUser from './modules/getAuthUser' // GET AUTH USER module
+import auth from './modules/auth' // module :: AUTH USER 
+import getAuthUser from './modules/getAuthUser' // module :: GET AUTH USER INFO 
 
 export default new Vuex.Store({
     state,
@@ -32,7 +32,7 @@ export default new Vuex.Store({
     mutations,
     actions,
     modules: {
-    	auth
-    	//getAuthUser
+    	auth,
+    	getAuthUser
     }
 });

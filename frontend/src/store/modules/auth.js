@@ -3,8 +3,7 @@ import axios from 'axios';
 
 const state = {
   //isLoggedIn: localStorage.getItem("token"), // AUTH State
-  isLoggedIn: false,
-  userInfo: 'EMPTY' // Initial State
+  isLoggedIn: false
 }
 
 // getters
@@ -27,7 +26,7 @@ const mutations = {
   },
 
   [LOGIN_SUCCESS](state,token) {    
-    this.dispatch('auth/getAuthUser',token); // GET auth user info
+    this.dispatch('getAuthUser/getAuthUser',token); // GET auth user info
     state.isLoggedIn = true;
     state.pending = false; // HIDE PreLoader
   },
@@ -62,34 +61,6 @@ const actions = {
 
   },
 /* END LOGIN */
-
-/* GET AUTH USER INFO */
-  getAuthUser({state,commit,rootState}, token) {
-
-    // GET AUTH USER INFO
-    console.log("LOGIN >> AJAX CALL token:",token)
-
-    var authUserID = token; // TO DO -> get REAL CURRENT AUTH USER ID
-        authUserID = 1; // For prototype purposes
-
-    // URL for AXIOS API request to Express Server
-    var urlAPI = 'http://localhost:3000/api/v1.0/users/'+authUserID;
-
-    axios.get(urlAPI)
-      .then(function (response) {
-        if(response.status === 204){
-          console.log("USER NOT FOUND"); // APP SHOULD NEVER GET HERE!
-        }else if(response.status === 200){
-          state.userInfo = response.data;
-        }
-        //console.log("AJAX ans ::",response.status,response.data);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-
-  },
-/* GET AUTH USER INFO */
 
 /* LOGOUT */
   logout({commit}) {
