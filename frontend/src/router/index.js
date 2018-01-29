@@ -69,17 +69,19 @@ router.beforeEach((to, from, next) => {
   var r = requiresAuth;
   var a = authState;
   var c;
+  var fb;
 
   if(requiresAuth === true && authState) {
 
     c = 1;
+    fb = "";
     // App content
     next(); // Keep goint to url
 
   } else if(requiresAuth === true && !authState) {
 
     c = 2;
-    console.log("- - - - - - - -\nWeird case. App should never get here\nTODO => persistent auth user state.\n- - - - - - - -");
+    fb = "\n- - - - - - - -\nWeird case. App should never get here\nTODO => persistent auth user state.\n- - - - - - - -";
     //next('/login'); // Redirect to login for prototype purposes
     next({
       path: 'login',
@@ -89,6 +91,7 @@ router.beforeEach((to, from, next) => {
   } else if(requiresAuth === false && !authState) {
 
     c = 3;
+    fb = "";
     // 'logout'
     // 'login'
     next({
@@ -97,7 +100,7 @@ router.beforeEach((to, from, next) => {
 
   }
 
-  console.log("[ROUTER] case",c,"=>","r:",r,"a:",a);
+  console.log("[ROUTER] case",c,"=>","r:",r,"a:",a,fb);
 
 })
 
