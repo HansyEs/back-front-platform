@@ -1,0 +1,34 @@
+/* FEEDBACK */
+
+.feedback {
+
+	padding: 0;
+
+	.message {
+		border-radius: 3px;
+		padding-top: 6px;
+		padding-bottom: 3px;
+	}
+	
+	.success {
+
+		border: 1px solid $secondary;
+		background: rgba($secondary,0.3);
+
+	}
+
+	.error {
+
+		border: 1px solid $danger;
+		background: rgba($danger,0.3)
+
+	}
+
+	.warning {
+
+		border: 1px solid $warning;
+		background: rgba($warning,0.3)
+
+	}
+
+}

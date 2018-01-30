@@ -5,7 +5,7 @@
   
     <form class="" @submit.prevent="login">
       <label><input class="form-control" v-model="email" placeholder="email"></label>
-      <label><input class="form-control" v-model="pass" placeholder="password = p" type="password"></label><br>
+      <label><input class="form-control" v-model="password" placeholder="password = p" type="password"></label><br>
       <div class="text-center mt-m">
         <button class="btn btn-primary" type="submit">login</button>
       </div>
@@ -15,8 +15,8 @@
     </form>
 
     <div class="col-sm-12 mt-m text-center feedback">
-      <p v-if="$route.query.redirect">You need to login first.</p>
-      <p v-if="error" class="error">Bad login information</p>
+      <p v-if="$route.query.redirect" class="message warning">You need to login first!</p>
+      <p v-if="error" class="message error">Bad login information!</p>
     </div>
     
   </div>
@@ -31,7 +31,7 @@ export default {
   data () {
     return {
       email: 'joe@example.com',
-      pass: '',
+      password: '',
       error: false
     }
   },
@@ -46,30 +46,28 @@ export default {
     login () {
 
       //console.log("dispatching");
-      this.$store.dispatch("auth/login", {
-        email: this.email,
-        password: this.password
+      var e = this.email;
+      var p = this.password;
+      var eTest = "joe@example.com";
+      var pTest = "p";
+      console.log(e,p,eTest,pTest);
 
-      }).then(() => {
+      if( e === eTest && p === pTest ){ // => for prototype purposes
 
-        console.log("login resolved");
-        this.$router.replace(this.$route.query.redirect || '/')
-        // If there is no redirect url send them to => '/'
+        this.$store.dispatch("auth/login", {
+          email: this.email,
+          password: this.password
+        }).then(() => {
+          console.log("login resolved");
+          this.$router.replace(this.$route.query.redirect || '/')
+          // If there is no redirect url send them to => '/'
+        });
 
-      });
-      
-      /*
-      auth.login(this.email, this.pass, loggedIn => {
-        if (!loggedIn) {
-          console.log("ERROR :: TO DO => style error message");
-          this.error = true
-        } else {
-          this.$store.dispatch('login'); // Action dispatch from auth.js -> loggedIn() to keep getter alive!
-          this.$router.replace(this.$route.query.redirect || '/') // If there is no redirect url send them to => '/'
-        }
-      });
-      //console.log('>> getterAuthState from Login component -->',this.$store.state.authState);
-      */
+      } else {
+        // TO DO => make it real
+        // console.log("ERROR :: TO DO => style error message");
+        this.error = true // => show error
+      }
 
     }
   }

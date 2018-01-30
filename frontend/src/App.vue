@@ -42,7 +42,6 @@ export default {
       return getAuthState;
     },
     isLoading() {
-      //var getAuthState = this.$store.state.auth.isLoggedIn; // BETTER use GETTERS for persistent state
       var loadingState = this.$store.getters["auth/pending"];
       //console.log("GETTER authState =",getAuthState)
       return loadingState;
