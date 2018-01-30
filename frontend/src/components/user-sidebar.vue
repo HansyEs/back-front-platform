@@ -1,5 +1,5 @@
 <template>
-  <div class="content user-sidebar-view">
+  <div class="content">
 
     <div class="row">
       <div class="col-sm-8">

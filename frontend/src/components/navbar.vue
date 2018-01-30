@@ -26,7 +26,7 @@
 
       <ul class="navbar-nav sidenav-toggler">
         <li class="nav-item">
-          <a class="nav-link text-center" id="sidenavToggler">
+          <a class="nav-link text-center" id="sidenavToggler" @click="sideCollapse">
             <i class="fa fa-fw fa-angle-left"></i>
           </a>
         </li>
@@ -154,6 +154,7 @@ export default {
 
   data() {
     return {
+      isSideCollapse: false // initial state
     }
 
   },
@@ -176,6 +177,16 @@ export default {
       this.$store.dispatch('auth/logout');
       if(!this.isLoggedIn){
         this.$router.replace('/login'); // If auth state false redirect to login
+      }
+    },
+    sideCollapse(){
+      //console.log("SIDE COLLAPSE!")
+      if(!this.isSideCollapse){
+        document.body.classList.toggle('sidenav-toggled');
+        this.isSideCollapse = true;
+      }else{
+        document.body.classList.toggle('sidenav-toggled');
+        this.isSideCollapse = false;
       }
     }
   }

@@ -98,9 +98,13 @@
 			ul.navbar-sidenav {
 
 				overflow: hidden;
-				width: 250px;
+				max-width: 250px;
+
+				transition: max-width .2s ease;
 
 				.user-sidebar-view {
+
+					.user-icon {display: none;}
 
 					background: $d-primary;
 					color: $white;
@@ -150,5 +154,44 @@
 		}
 
 	}
+
+}
+
+/* LEFT SIDEBAR TOGGLED STYLES */
+
+.sidenav-toggled {
+
+	.user-sidebar-view {
+
+		width: 55px!important;
+		padding: 0 !important;
+
+		.user-icon {
+			display: inline-block !important;
+			width: 100%;
+			text-align: center;
+			a {
+				display: inline-block;
+				width: 100%;
+				height: 54px;
+				padding-top: 15px;
+			}
+		}
+
+		.row {display: none;}
+		
+	}
+
+	#mainNav.navbar-light .navbar-collapse .navbar-sidenav {
+		width: 55px;
+		max-width: 55px;
+		transition: max-width .6s ease;
+	}
+
+	.navbar.navbar-light .navbar-collapse ul.navbar-sidenav li.nav-item a {
+		padding-left: 15px;
+		text-align: center;
+	}
+	.navbar.navbar-light .navbar-collapse ul.navbar-sidenav li.nav-item a span {display: none;}
 
 }

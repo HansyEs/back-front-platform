@@ -1,18 +1,18 @@
 <template>
   <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
     <li class="user-sidebar-view">
+      <div class="user-icon">
+        <router-link to="/profile" class="">
+          <i class="fa fa-user-o"></i>
+        </router-link>
+      </div>
       <user-sidebar></user-sidebar>
     </li>
     <router-link to="/" tag="li" class="nav-item" data-toggle="tooltip" data-placement="right" title="" data-original-title="Dashboard">
-      <a><i class="fa fa-home"></i>Home</a>
+      <a><i class="fa fa-home"></i><span>Home</span></a>
     </router-link>
-    <!--
-    <router-link to="/profile" tag="li" class="nav-item" data-toggle="tooltip" data-placement="right" title="" data-original-title="Profile">
-      <a><i class="fa fa-user-o"></i>Profile</a>
-    </router-link>
-    -->
     <router-link to="/organization" tag="li" class="nav-item" data-toggle="tooltip" data-placement="right" title="" data-original-title="Organization">
-      <a><i class="fa fa-sitemap"></i>Organization</a>
+      <a><i class="fa fa-sitemap"></i><span>Organization</span></a>
     </router-link>
     <!-- TEMPLATE
     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="" data-original-title="Tables">
