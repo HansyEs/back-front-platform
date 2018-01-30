@@ -3,7 +3,8 @@ import axios from 'axios';
 
 const state = {
   //isLoggedIn: localStorage.getItem("token"), // AUTH State
-  isLoggedIn: false
+  isLoggedIn: false,
+  pending: false
 }
 
 // getters
@@ -11,6 +12,10 @@ const getters = {
   isLoggedIn: state => {
     //console.log("GETTER store/auth => store.state.auth.isLoggedIn =",state.isLoggedIn);
     return state.isLoggedIn;
+  },
+  pending: state => {
+    console.log("LOADING",state.pending);
+    return state.pending;
   }
 }
 
@@ -56,7 +61,7 @@ const actions = {
         localStorage.setItem('token', token);
         commit(LOGIN_SUCCESS,token); // change the isLoggedIn state
         resolve();
-      }, 1000);
+      }, 1500);
     });
 
   },

@@ -8,6 +8,17 @@
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 
+	/* TRANSITIONS BETWEEN COMPONENTS */
+	.fade-enter-active {
+		opacity: 1;
+		transition: opacity .6s ease-out;
+	}
+
+	.fade-enter, .fade-leave-active {
+		opacity: 0;
+	}
+	/* TRANSITIONS BETWEEN COMPONENTS */
+
 /* APP GLOBAL STYLES */
 
 	&.talentooAdmin {
@@ -88,6 +99,18 @@
 
 }
 
+footer {
+
+	@media (min-width: 1200px){
+
+		.container {
+			max-width: none;
+		}
+
+	}
+
+}
+
 /* LOGIN VIEW STYLES */
 @import './assets/css/login.scss';
 
@@ -102,3 +125,6 @@
 
 /* ITEMS TABLES STYLES */
 @import './assets/css/items-table.scss';
+
+/* LOADER for pending answers */
+@import './assets/css/loader.scss';

@@ -2,28 +2,23 @@
 
   <div id="app" class="talentooAdmin" v-bind:class="{ loginView: !isLoggedIn }">
 
-    <!-- TO DO => if(user.auth()) -> v-if -->
     <navbar></navbar>
 
     <div class="content-wrapper">
   
       <!-- the router outlet, where all matched components would be viewed -->
-      <router-view/>
+      <transition name="fade">
+        <router-view/>
+      </transition>
 
       <app-footer></app-footer>
 
     </div>
-    <!-- END TO DO => if(user.auth()) -->
 
-    <!-- TO DO => if(!user.auth()) -> v-if -->
-
-      <!-- Login.vue 
-      <div class="container" id="login">
-        login form
-      </div>
-      -->
-
-    <!-- END TO DO => if(!user.auth()) -->
+    <!--<div class="loader" v-if="loading">-->
+    <div class="loader" v-bind:class="{ active: isLoading }">
+      <div class="spinner square" v-if="isLoading"></div>
+    </div>
 
   </div>
 
@@ -41,17 +36,16 @@ export default {
   },
 
   computed: {
-    /*
-    isLoggedIn() {
-      var getterAuthState = this.$store.state.auth.isLoggedIn;
-      //console.log(this.$store.state.auth.isLoggedIn)
-      return getterAuthState;
-    }
-    */
     isLoggedIn: function () {
-      var getterAuthState = this.$store.state.auth.isLoggedIn;
-      //console.log(this.$store.state.auth.isLoggedIn)
-      return getterAuthState;
+      var getAuthState = this.$store.getters["auth/isLoggedIn"];
+      //console.log(this.$store.getters["auth/isLoggedIn"])
+      return getAuthState;
+    },
+    isLoading() {
+      //var getAuthState = this.$store.state.auth.isLoggedIn; // BETTER use GETTERS for persistent state
+      var loadingState = this.$store.getters["auth/pending"];
+      //console.log("GETTER authState =",getAuthState)
+      return loadingState;
     }
   },
 
