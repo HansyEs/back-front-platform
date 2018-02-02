@@ -134,10 +134,14 @@
 <!-- END SEARCH -->
 
         <li class="nav-item">
+          <!--
+          <router-link to="/logout" tag="a" class="nav-link" title="Logout">
+            <i class="fa fa-fw fa-sign-out"></i>
+          </router-link> 
+          -->
           <a @click="logout" tag="a" class="nav-link" title="Logout">
             <i class="fa fa-fw fa-sign-out"></i>
-          </a>
-          
+          </a>    
         </li>
 
       </ul>  
@@ -165,16 +169,22 @@ export default {
 
   computed: {
     isLoggedIn() {
-      //var getAuthState = this.$store.state.auth.isLoggedIn; // BETTER use GETTERS for persistent state
-      var getAuthState = this.$store.getters["auth/isLoggedIn"];
-      //console.log("GETTER authState =",getAuthState)
-      return getAuthState;
+      //var getAuthState = this.$store.getters["auth/isLoggedIn"];
+      var getAuthState = this.$store.getters["authFirebase/isLoggedIn"]; // WITH FIREBASE
+      console.log("NAVBAR auth state =",getAuthState);
+      if(!getAuthState){
+        this.$router.replace('/login'); // If auth state false redirect to login
+      } else {
+        return getAuthState;
+      }
+      
     }
   },
 
   methods: {
     logout() {
-      this.$store.dispatch('auth/logout');
+      //this.$store.dispatch('auth/logout');
+      this.$store.dispatch('authFirebase/logout'); // WITH FIREBASE
       if(!this.isLoggedIn){
         this.$router.replace('/login'); // If auth state false redirect to login
       }

@@ -39,8 +39,8 @@ export default {
 
   computed: {
     user () {
-      var userData = this.$store.getters['getAuthUser/authUserInfo'];
-      //console.log("[COMPONENT :: user-sidebar] Auth User Info =",userData)
+      //var userData = this.$store.getters['getAuthUser/authUserInfo'];
+      var userData = this.$store.getters['getAuthUserFirebase/authUserInfo']; // WITH FIREBASE
       return userData; // from -> ./store/module/getAuthUser
     }
   },

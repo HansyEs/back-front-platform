@@ -37,12 +37,14 @@ export default {
 
   computed: {
     isLoggedIn: function () {
-      var getAuthState = this.$store.getters["auth/isLoggedIn"];
+      //var getAuthState = this.$store.getters["auth/isLoggedIn"];
+      var getAuthState = this.$store.getters["authFirebase/isLoggedIn"]; // WITH FIREBASE
       //console.log(this.$store.getters["auth/isLoggedIn"])
       return getAuthState;
     },
     isLoading() {
-      var loadingState = this.$store.getters["auth/pending"];
+      //var loadingState = this.$store.getters["auth/pending"];
+      var loadingState = this.$store.getters["authFirebase/pending"]; // WITH FIREBASE
       //console.log("GETTER authState =",getAuthState)
       return loadingState;
     }

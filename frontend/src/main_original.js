@@ -22,36 +22,17 @@ Vue.component('app-footer',AppFooter)
 
 Vue.config.productionTip = false
 
-//FIREBASE FOR AUTH PROTOTYPE
-import firebase from 'firebase'
-
-let app;
-let config = {
-  apiKey: "AIzaSyAiByn6Pltcgb1RjS0ymbvfBnbBb8U9xe0",
-  authDomain: "tt-dashboard-c6268.firebaseapp.com",
-  databaseURL: "https://tt-dashboard-c6268.firebaseio.com",
-  projectId: "tt-dashboard-c6268",
-  storageBucket: "tt-dashboard-c6268.appspot.com",
-  messagingSenderId: "827126545333"
-};
-
-firebase.initializeApp(config)
-
-firebase.auth().onAuthStateChanged(function(user) {
-  if (!app) {
-    /* eslint-disable no-new */
-    app = new Vue({
-      el: '#app',
-      router,
-      template: '<App/>',
-      store, // Inject store so all components can access its data
-      components: { 
-      	App,
-      	AppNavbar,
-      	AppNavbarCollapsible,
-      	UserSidebar,
-      	AppFooter,
-      }
-    })
+/* eslint-disable no-new */
+app = new Vue({
+  el: '#app',
+  router,
+  template: '<App/>',
+  store, // Inject store so all components can access its data
+  components: { 
+  	App,
+  	AppNavbar,
+  	AppNavbarCollapsible,
+  	UserSidebar,
+  	AppFooter,
   }
-});
+})

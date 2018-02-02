@@ -5,7 +5,7 @@
   
     <form class="" @submit.prevent="login">
       <label><input class="form-control" v-model="email" placeholder="email"></label>
-      <label><input class="form-control" v-model="password" placeholder="password = p" type="password"></label><br>
+      <label><input class="form-control" v-model="password" placeholder="password" type="password"></label><br>
       <div class="text-center mt-m">
         <button class="btn btn-primary" type="submit">login</button>
       </div>
@@ -16,7 +16,7 @@
 
     <div class="col-sm-12 mt-m text-center feedback">
       <p v-if="$route.query.redirect" class="message warning">You need to login first!</p>
-      <p v-if="error" class="message error">Bad login information!</p>
+      <p v-if="error" class="message error">{{feedbackMsg}}</p>
     </div>
     
   </div>
@@ -24,15 +24,18 @@
 
 <script>
 
+import firebase from 'firebase'
+
 export default {
 
   name: "Login",
 
   data () {
     return {
-      email: 'joe@example.com',
+      email: '',
       password: '',
-      error: false
+      error: false,
+      feedbackMsg: ''
     }
   },
 
@@ -43,11 +46,14 @@ export default {
   },
 
   methods: {
+    // FAKE LOGIN
+    /*
     login () {
 
       //console.log("dispatching");
       var e = this.email;
       var p = this.password;
+      
       var eTest = "joe@example.com";
       var pTest = "p";
       console.log(e,p,eTest,pTest);
@@ -68,8 +74,41 @@ export default {
         // console.log("ERROR :: TO DO => style error message");
         this.error = true // => show error
       }
-
     }
+    */
+    // END FAKE LOGIN
+    // FIREBASE LOGIN
+    login: function() {
+
+      var e = this.email;
+      var p = this.password;
+
+      if(e===""){
+
+        this.feedbackMsg = "No email or username!";
+        this.error = true // => show error
+
+      }else{
+
+        this.$store.dispatch("authFirebase/login"); // DISPATCH ACTION TO STORE
+
+        firebase.auth().signInWithEmailAndPassword(e,p).then(
+          (user) => {
+            //console.log("login resolved",user.email);
+            this.$store.dispatch("authFirebase/loginSuccess", {email: e, userUID: user.uid}); // DISPATCH ACTION TO STORE
+            this.$router.replace(this.$route.query.redirect || '/')
+            // If there is no redirect url send them to => '/'
+          },
+          (err) => {
+            console.log('Oops. ' + err.message);
+            this.feedbackMsg = err.message;
+            this.error = true // => show error
+          }
+        );
+
+      }
+    }
+    // FIREBASE LOGIN
   }
 }
 </script>

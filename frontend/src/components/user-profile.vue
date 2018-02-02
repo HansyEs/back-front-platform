@@ -61,7 +61,8 @@ export default {
 
   computed: {
     user () {
-      var userData = this.$store.getters['getAuthUser/authUserInfo'];
+      //var userData = this.$store.getters['getAuthUser/authUserInfo'];
+      var userData = this.$store.getters['getAuthUserFirebase/authUserInfo']; // WITH FIREBASE
       //console.log("[COMPONENT :: user-profile] Auth User Info =",userData)
       return userData; // from -> ./store/module/getAuthUser
     }

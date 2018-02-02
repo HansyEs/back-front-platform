@@ -23,8 +23,10 @@ const actions = {
 // END STORE EXAMPLES
 
 // IMPORT STORE MODULES
-import auth from './modules/auth' // module :: AUTH USER 
-import getAuthUser from './modules/getAuthUser' // module :: GET AUTH USER INFO 
+// import auth from './modules/auth' // module :: AUTH USER 
+import authFirebase from './modules/auth_firebase' // module :: AUTH WITH FIREBASE 
+// import getAuthUser from './modules/getAuthUser' // module :: GET AUTH USER INFO 
+import getAuthUserFirebase from './modules/getAuthUser_firebase' // module :: GET AUTH USER INFO 
 
 export default new Vuex.Store({
     state,
@@ -32,7 +34,9 @@ export default new Vuex.Store({
     mutations,
     actions,
     modules: {
-    	auth,
-    	getAuthUser
+    	//auth,
+    	authFirebase,
+    	//getAuthUser
+        getAuthUserFirebase
     }
 });

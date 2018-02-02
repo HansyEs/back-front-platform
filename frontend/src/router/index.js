@@ -1,5 +1,8 @@
 import Vue from 'vue';
 import Router from 'vue-router';
+
+import firebase from 'firebase'
+
 import Login from '@/components/Login';
 import store from '@/store/store';
 import Home from '@/components/Home';
@@ -43,13 +46,13 @@ const router = new Router({
       meta: {
         requiresAuth: true
       }
-    },
+    }/*,
     { path: '/logout',
       beforeEnter (to, from, next) {
-        store.dispatch('auth/logout');
-        next('/login') // Redirect to
+        store.dispatch('authFirebase/logout')
+        next('login') // Redirect to
       }
-    }
+    }*/
   ],
   mode: 'history', // AVOID # from urls
   history: true
@@ -63,13 +66,16 @@ router.beforeEach((to, from, next) => {
   
   // Does this url need auth to be shown?
   const requiresAuth = to.matched.some( record => record.meta.requiresAuth);
+
   // User Auth State => Need to be persistent to avoid page reloads problems
-  const authState = store.state.auth.isLoggedIn;
+  //const authState = store.state.auth.isLoggedIn;
+  const authState = store.state.authFirebase.isLoggedIn;
+  console.log("ROUTER auth state =",authState);
 
   var r = requiresAuth;
   var a = authState;
-  var c;
-  var fb;
+  var c;  // Case
+  var fb; // Console Feedback
 
   if(requiresAuth === true && authState) {
 
