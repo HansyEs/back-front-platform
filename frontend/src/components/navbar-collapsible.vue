@@ -8,7 +8,7 @@
       </div>
       <user-sidebar></user-sidebar>
     </li>
-    <router-link to="/home" tag="li" class="nav-item" data-toggle="tooltip" data-placement="right" title="" data-original-title="Dashboard">
+    <router-link to="/" tag="li" class="nav-item" data-toggle="tooltip" data-placement="right" title="" data-original-title="Dashboard">
       <a><i class="fa fa-home"></i><span>Home</span></a>
     </router-link>
     <router-link to="/organization" tag="li" class="nav-item" data-toggle="tooltip" data-placement="right" title="" data-original-title="Organization">

@@ -70,7 +70,6 @@ router.beforeEach((to, from, next) => {
   // User Auth State => Need to be persistent to avoid page reloads problems
   //const authState = store.state.auth.isLoggedIn;
   const authState = store.state.authFirebase.isLoggedIn;
-  console.log("ROUTER auth state =",authState);
 
   var r = requiresAuth;
   var a = authState;
@@ -88,7 +87,6 @@ router.beforeEach((to, from, next) => {
 
     c = 2;
     fb = "\n- - - - - - - -\nWeird case. App should never get here\nTODO => persistent auth user state.\n- - - - - - - -";
-    //next('/login'); // Redirect to login for prototype purposes
     next({
       path: 'login',
       query: { redirect: to.fullPath }
@@ -106,7 +104,8 @@ router.beforeEach((to, from, next) => {
 
   }
 
-  console.log("[ROUTER] case",c,"=>","r:",r,"a:",a,fb);
+  // ROUTER CONSOLE LOGS
+  // console.log("[ROUTER] case",c,"=>","r:",r,"a:",a,fb);
 
 })
 

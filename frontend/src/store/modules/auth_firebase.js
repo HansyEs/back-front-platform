@@ -12,7 +12,7 @@ const state = {
 // getters
 const getters = {
   isLoggedIn: state => {
-    console.log("GETTER store/auth => isLoggedIn =",state.isLoggedIn);
+    //console.log("GETTER store/auth => isLoggedIn =",state.isLoggedIn);
     return state.isLoggedIn;
   },
   pending: state => {
