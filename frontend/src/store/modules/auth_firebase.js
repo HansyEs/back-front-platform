@@ -5,7 +5,6 @@ import firebase from 'firebase';
 
 const state = {
   //isLoggedIn: localStorage.getItem("token"), // AUTH State
-  //isLoggedIn: false,
   isLoggedIn: null,
   pending: false
 }
@@ -58,7 +57,6 @@ const actions = {
 
 /* LOGIN SUCCESS */  
   loginSuccess({state,commit,rootState}, creds) {
-    // FETCH AUTH USER INFO SUCCEDED!!!
     commit(LOGIN_SUCCESS,creds); // show spinner
   },
 /* END LOGIN */

@@ -41,6 +41,7 @@ export default {
     user () {
       //var userData = this.$store.getters['getAuthUser/authUserInfo'];
       var userData = this.$store.getters['getAuthUserFirebase/authUserInfo']; // WITH FIREBASE
+      console.log(userData);
       return userData; // from -> ./store/module/getAuthUser
     }
   },

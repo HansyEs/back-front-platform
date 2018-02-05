@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 const state = {
-  authUserInfo: 'AUTH USER INFO EMPTY' // Initial State
+  authUserInfo: "EMPTY INFO" // Initial State
 }
 
 // getters
