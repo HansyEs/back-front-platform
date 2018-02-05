@@ -29,12 +29,13 @@ const mutations = {
 const actions = {
 
 /* GET AUTH USER INFO */
-getAuthUser({state,commit,rootState}, creds) {
+getAuthUser({state,commit,rootState}, user) {
 
   // GET AUTH USER INFO
-  console.log("Getting auth user: ",creds)
+  // console.log("Getting auth user: ",user)
+  console.log("Getting auth user!")
 
-  var authUserID = creds.userUID; // TO DO -> get REAL CURRENT AUTH USER ID
+  var authUserID = user.uid; // TO DO -> get REAL CURRENT AUTH USER ID
       authUserID = 1; // For prototype purposes
 
   // URL for AXIOS API request to Express Server

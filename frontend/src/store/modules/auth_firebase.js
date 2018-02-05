@@ -5,7 +5,8 @@ import firebase from 'firebase';
 
 const state = {
   //isLoggedIn: localStorage.getItem("token"), // AUTH State
-  isLoggedIn: false,
+  //isLoggedIn: false,
+  isLoggedIn: null,
   pending: false
 }
 
@@ -27,7 +28,7 @@ const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 const LOGOUT = "LOGOUT";
 
 const mutations = {
-
+  
   [LOGIN](state,creds) {
     state.pending = true; // SHOW PreLoader
   },
@@ -64,7 +65,6 @@ const actions = {
 
 /* LOGOUT */
   logout({commit}) {
-    console.log("HERE");
     firebase.auth().signOut().then(() => {
       console.log("LOGOUT Dispatched");
       commit(LOGOUT); // AUTH STATE CHANGED

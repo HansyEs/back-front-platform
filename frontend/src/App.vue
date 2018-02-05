@@ -26,6 +26,9 @@
 
 <script>
 
+import store from './store/store'
+import firebase from 'firebase'
+
 export default {
 
   name: 'app',
@@ -48,6 +51,22 @@ export default {
       //console.log("GETTER authState =",getAuthState)
       return loadingState;
     }
+  },
+
+  beforeCreate: function() {
+    // CHECK IF USER IS AUTHed TO AVOID RELOAD PROBLEMS
+    firebase.auth().onAuthStateChanged((user) => {
+      if(user){
+          // IF USER AUTHed
+          // Dispatch mutation for persistent auth state behaviour
+          // console.log("USER AUTH > YEAH!");
+          this.$store.commit("authFirebase/LOGIN_SUCCESS",user)
+        }else{
+          // IF USER !AUTHed
+          // Let the router app do its work
+          // console.log("USER AUTH > NOPE!");
+        }
+    })
   },
 
   created: function(){

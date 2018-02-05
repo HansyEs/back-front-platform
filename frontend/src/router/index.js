@@ -69,7 +69,7 @@ router.beforeEach((to, from, next) => {
 
   // User Auth State => Need to be persistent to avoid page reloads problems
   //const authState = store.state.auth.isLoggedIn;
-  const authState = store.state.authFirebase.isLoggedIn;
+  const authState = firebase.auth().currentUser; // FOR PERSISTENT AUTH STATE
 
   var r = requiresAuth;
   var a = authState;

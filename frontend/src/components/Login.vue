@@ -75,6 +75,7 @@ export default {
     }
     */
     // END FAKE LOGIN
+    
     // FIREBASE LOGIN
     login: function() {
 
@@ -93,8 +94,7 @@ export default {
         firebase.auth().signInWithEmailAndPassword(e,p).then(
           (user) => {
             //console.log("login resolved",user.email);
-            firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL);
-            this.$store.dispatch("authFirebase/loginSuccess", {email: e, userUID: user.uid}); // DISPATCH ACTION TO STORE
+            this.$store.dispatch("authFirebase/loginSuccess", user); // DISPATCH ACTION TO STORE
             this.$router.replace(this.$route.query.redirect || '/')
             // If there is no redirect url send them to => '/'
           },
