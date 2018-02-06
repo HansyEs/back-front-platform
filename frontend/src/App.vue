@@ -59,7 +59,6 @@ export default {
       if(user){
           // IF USER AUTHed
           // Dispatch mutation for persistent auth state behaviour
-          // console.log("USER AUTH > YEAH!");
           this.$store.commit("authFirebase/LOGIN_SUCCESS",user)
         }else{
           // IF USER !AUTHed

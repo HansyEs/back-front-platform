@@ -11,9 +11,6 @@
         <router-link to="/profile" class="btn-sm btn-primary">edit</router-link>
       </div>
     </div>
-<!--
-    <p>{{user.name}}</p>
--->   
     <div class="row">
       <div class="col-sm-12">
         <h4 class="ellipsis user-name">{{user.name}} {{user.surname}}</h4>
@@ -41,7 +38,7 @@ export default {
     user () {
       //var userData = this.$store.getters['getAuthUser/authUserInfo'];
       var userData = this.$store.getters['getAuthUserFirebase/authUserInfo']; // WITH FIREBASE
-      console.log(userData);
+      //console.log("[UserSidebar] userData:",userData); // EACH Time the value changes the component reevaluates 
       return userData; // from -> ./store/module/getAuthUser
     }
   },

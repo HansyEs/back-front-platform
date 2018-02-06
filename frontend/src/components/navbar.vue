@@ -171,7 +171,7 @@ export default {
     isLoggedIn() {
       //var getAuthState = this.$store.getters["auth/isLoggedIn"];
       var getAuthState = this.$store.getters["authFirebase/isLoggedIn"]; // WITH FIREBASE
-      console.log("NAVBAR auth state =",getAuthState);
+      console.log("[NAVBAR] auth state =",getAuthState);
       if(!getAuthState){
         this.$router.replace('/login'); // If auth state false redirect to login
       } else {

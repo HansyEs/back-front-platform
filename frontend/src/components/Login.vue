@@ -89,7 +89,7 @@ export default {
 
       }else{
 
-        this.$store.dispatch("authFirebase/login"); // DISPATCH ACTION TO STORE
+        this.$store.dispatch("authFirebase/login"); // DISPATCH ACTION TO SHOW PRELOADER
 
         firebase.auth().signInWithEmailAndPassword(e,p).then(
           (user) => {

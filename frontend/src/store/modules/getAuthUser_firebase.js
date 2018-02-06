@@ -2,13 +2,13 @@
 import axios from 'axios';
 
 const state = {
-  authUserInfo: "EMPTY INFO" // Initial State
+  authUserInfo: "" // Initial State
 }
 
 // getters
 const getters = {
   authUserInfo: state => {
-    //console.log("[GETTER] store/modules/getAuthUser ::",state.authUserInfo);
+    //console.log("[GETTER] store/getAuthUser ::",state.authUserInfo);
     return state.authUserInfo; // RETURN Auth User data
    }
 }
