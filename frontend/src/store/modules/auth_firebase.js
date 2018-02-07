@@ -33,13 +33,13 @@ const mutations = {
   },
 
   [LOGIN_SUCCESS](state,creds) {   
-    this.dispatch('getAuthUserFirebase/getAuthUser',creds); // GET auth user info 
+    //this.dispatch('getAuthUserFirebase/getAuthUser',creds); // GET auth user info 
     state.isLoggedIn = firebase.auth().currentUser;
     state.pending = false; // HIDE PreLoader
   },
 
   [LOGOUT](state) {
-    console.log("LOGOUT Commited",firebase.auth().currentUser);
+    //console.log("LOGOUT Commited",firebase.auth().currentUser);
     state.isLoggedIn = false;
     // TO DO => disconnect user from server
   }  
@@ -64,7 +64,7 @@ const actions = {
 /* LOGOUT */
   logout({commit}) {
     firebase.auth().signOut().then(() => {
-      console.log("LOGOUT Dispatched");
+      //console.log("LOGOUT Dispatched");
       commit(LOGOUT); // AUTH STATE CHANGED
     })
   }

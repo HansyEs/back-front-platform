@@ -37,7 +37,7 @@ const mutations = {
   },
 
   [LOGOUT](state) {
-    console.log("LOGOUT Dispatched");
+    //console.log("LOGOUT Dispatched");
     state.isLoggedIn = false;
     // TO DO => disconnect user from server
   }  

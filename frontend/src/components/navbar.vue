@@ -175,6 +175,7 @@ export default {
       if(!getAuthState){
         this.$router.replace('/login'); // If auth state false redirect to login
       } else {
+        this.$store.dispatch('getAuthUserFirebase/getAuthUser',getAuthState);
         return getAuthState;
       }
       

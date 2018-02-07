@@ -82,9 +82,9 @@ export default {
       var e = this.email;
       var p = this.password;
 
-      if(e===""){
+      if(e==="" || p===""){
 
-        this.feedbackMsg = "No email or username!";
+        this.feedbackMsg = "No email or password!";
         this.error = true // => show error
 
       }else{
@@ -106,6 +106,7 @@ export default {
         );
 
       }
+
     }
     // FIREBASE LOGIN
   }
