@@ -33,27 +33,49 @@ getAuthUser({state,commit,rootState}, user) {
 
   // GET AUTH USER INFO
   // console.log("Getting auth user: ",user)
-  console.log("Getting auth user!")
+  console.log("Getting auth user.uid =",user.uid);
 
-  var authUserID = user.uid; // TO DO -> get REAL CURRENT AUTH USER ID
-      authUserID = 1; // For prototype purposes
+  var authUserID = 'http://localhost:3000/api/v1.0/authFirebase/'+user.uid;
 
-  // URL for AXIOS API request to Express Server
-  var urlAPI = 'http://localhost:3000/api/v1.0/users/'+authUserID;
-
-  axios.get(urlAPI)
+  axios.get(authUserID)
     .then(function (response) {
       if(response.status === 204){
-        console.log("USER NOT FOUND"); // APP SHOULD NEVER GET HERE!
+        console.log("USER NOT AUTH"); // APP SHOULD NEVER GET HERE!
       }else if(response.status === 200){
-        //state.userInfo = response.data;
-        commit(GET_AUTH_USER,response);
+        //console.log("AUTH UID :",response);
+        if(response.data!=false){
+          fetchUserData(response);
+        }else{
+          console.log("TO DO => Create AUTHed USER in DB");
+        }
       }
-      //console.log("AJAX ans ::",response.status,response.data);
     })
     .catch(function (error) {
       console.log(error);
     });
+
+    function fetchUserData(obj){
+      
+      //console.log(obj.data.user_id);
+      var userUID = obj;
+
+      // URL for AXIOS API request to Express Server
+      var urlAPI = 'http://localhost:3000/api/v1.0/users/'+userUID;
+
+      axios.get(urlAPI)
+        .then(function (response) {
+          if(response.status === 204){
+            console.log("USER NOT FOUND"); // APP SHOULD NEVER GET HERE!
+          }else if(response.status === 200){
+            //state.userInfo = response.data;
+            console.log("USER RESP",response);
+            commit(GET_AUTH_USER,response);
+          }
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }
 
 },
 /* GET AUTH USER INFO */

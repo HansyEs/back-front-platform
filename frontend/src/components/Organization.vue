@@ -67,7 +67,7 @@
 
             <tbody>
               <tr class="item" v-for="item in items">
-                <td class="text-center tb-id">{{item.id}}</td>
+                <td class="text-center tb-id">{{item.user_id}}</td>
                 <td class="tb-img"><div class="user-img-sm"><img :src="item.imageURL"></div></td>
                 <td class="user-name"><b>{{item.name}}</b> {{item.surname}}</td>
                 <td>{{item.nick_name}}</td>
