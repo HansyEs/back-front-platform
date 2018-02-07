@@ -2,6 +2,7 @@ const _ = require('lodash'); // <- lodash for de-duplication
 const express = require('express');
 const app = express();
 const cors = require('cors');
+var MongoClient = require( 'mongodb' ).MongoClient; // Conexion con MongoDB
 
 app.use(cors());
 
@@ -21,34 +22,7 @@ app.get('/', function(req, res){
 
 // Petición de usuarios
 // Si no recibe el id debe devolver toda la lista de usuarios.
-app.get('/api/v1.0/users_test/:id?/:page?/:howmany?',function(req,res){
-    res.write('\nID del usuario  = '+req.params['id']);
-    res.write('\npagina  = '+req.params['page']);
-    res.write('\ncuantos  = '+req.params['howmany']);
-    res.write('\n');
-    // Ahora sacamos parametros adicionales si los hay.... ?page=5&howmany=20
-    res.write('parametros: \n');
-    url = require('url');
-    var query = url.parse(req.url,true).query;
-    res.write(JSON.stringify(query)+'\n\n');
-
-    // Ahora los datos reales
-    var found=false;
-    if (req.params['id']){
-        users.filter(function(user){
-            if(user.id == req.params['id']){
-                res.write('\nLos datos del usuario '+req.params['id']+' son '+JSON.stringify(user));
-                found = true;
-            }
-        });
-        if (!found){
-            res.write('\nUsuario no encontrado');
-        }
-    } else {
-        res.write(JSON.stringify(users));
-    }
-    res.end(); 
-});
+var mongoURL = 'mongodb://user_1:TtM4r1n4s@ds121088.mlab.com:21088/test1';
 
 app.get('/api/v1.0/users/:id?',function(req,res){
     // Tiene derechos???
@@ -56,24 +30,83 @@ app.get('/api/v1.0/users/:id?',function(req,res){
     var response;
     var status = 200;
     var found=false;
-    if (req.params['id']){
-        users.filter(function(user){
-            if(user.id == req.params['id']){
-                response = user;
-                found = true;
+
+        MongoClient.connect( mongoURL, (err, client) => {
+            //console.log(db);
+            if(err) throw err;
+
+            const data = client.db('test1');
+
+            //console.log("_id",req.params['id']);
+            var query = Number(req.params['id']);
+            var field = '';
+            if (req.params['id']){
+                field = {
+                    'user_id':query
+                }
             }
+            data.collection('users').find().toArray(function(findErr,resp){
+
+                if (findErr) throw findErr;
+                if (field==''){
+                    response = resp;
+                } else {
+                    response = resp[0];
+                }
+
+                res.json(response);
+                client.close();
+
+            })
+            
         });
-        if (!found){
-            // If status 204 data will be empty hagamos lo que hagamos!
-            status = 204;
-        }
-    } else {
-        response = users;
-    }
     
-    res.status(status).json(response);
 });
 
+app.get('/api/v1.0/authFirebase/:id?',function(req,res){
+    // Tiene derechos???
+    //console.log("ESTOY AQUI");
+    var response;
+    var status = 200;
+    var found=false;
+
+        MongoClient.connect( mongoURL, (err, client) => {
+            //console.log(db);
+            if(err) throw err;
+
+            const data = client.db('test1');
+
+            //console.log("_id",req.params['id']);
+            var query = req.params['id'];
+            var field = '';
+            if (req.params['id']){
+                field = {
+                    'type':"firebase",
+                    "token":query
+                }
+            } else {
+                res.json(0);
+            }
+            data.collection('auths').find(field).toArray(function(findErr,resp){
+                
+                if (findErr) throw findErr;
+                
+                // console.log("field",field);
+                // console.log("AQUI",resp[0]);
+                if (resp.length>0){
+                    response = resp[0].user_id;
+                } else {
+                    response = false;
+                }
+                
+                res.json(response);
+                client.close();
+
+            })
+            
+        });
+    
+});
 
 
 app.get('/api/items', function(req, res){
