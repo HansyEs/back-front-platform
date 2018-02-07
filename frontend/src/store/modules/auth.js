@@ -31,7 +31,6 @@ const mutations = {
   },
 
   [LOGIN_SUCCESS](state,token) {    
-    this.dispatch('getAuthUser/getAuthUser',token); // GET auth user info
     state.isLoggedIn = true;
     state.pending = false; // HIDE PreLoader
   },

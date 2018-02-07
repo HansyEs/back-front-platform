@@ -33,7 +33,6 @@ const mutations = {
   },
 
   [LOGIN_SUCCESS](state,creds) {   
-    //this.dispatch('getAuthUserFirebase/getAuthUser',creds); // GET auth user info 
     state.isLoggedIn = firebase.auth().currentUser;
     state.pending = false; // HIDE PreLoader
   },
