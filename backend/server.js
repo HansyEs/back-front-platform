@@ -45,7 +45,7 @@ app.get('/api/v1.0/users/:id?',function(req,res){
                     'user_id':query
                 }
             }
-            data.collection('users').find().toArray(function(findErr,resp){
+            data.collection('users').find(field).toArray(function(findErr,resp){
 
                 if (findErr) throw findErr;
                 if (field==''){
