@@ -93,7 +93,7 @@ export default {
 
         firebase.auth().signInWithEmailAndPassword(e,p).then(
           (user) => {
-            console.log("Login.vue");
+            //console.log("Login.vue");
             this.$store.dispatch("authFirebase/loginSuccess", user); // DISPATCH ACTION TO STORE
             this.$router.replace(this.$route.query.redirect || '/')
             // If there is no redirect url send them to => '/'
