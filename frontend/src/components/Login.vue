@@ -89,17 +89,17 @@ export default {
 
       }else{
 
-        this.$store.dispatch("authFirebase/login"); // DISPATCH ACTION TO SHOW PRELOADER
-
         firebase.auth().signInWithEmailAndPassword(e,p).then(
           (user) => {
-            //console.log("Login.vue");
-            this.$store.dispatch("authFirebase/loginSuccess", user); // DISPATCH ACTION TO STORE
-            this.$router.replace(this.$route.query.redirect || '/')
+            // console.log("Login.vue === fib user exists");
+            this.$store.dispatch("authFirebase/login"); // DISPATCH ACTION TO SHOW PRELOADER
+            // this.$store.dispatch("authFirebase/loginSuccess", user); // DISPATCH ACTION TO GET AUTHed USER INFO
             // If there is no redirect url send them to => '/'
+            this.$router.replace(this.$route.query.redirect || '/')            
           },
           (err) => {
             console.log('Oops. ' + err.message);
+            this.$store.dispatch("authFirebase/loginFail"); // DISPATCH ACTION TO STORE
             this.feedbackMsg = err.message;
             this.error = true // => show error
           }

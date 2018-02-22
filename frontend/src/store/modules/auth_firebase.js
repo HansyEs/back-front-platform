@@ -24,6 +24,7 @@ const getters = {
 // mutations
 const LOGIN = "LOGIN";
 const LOGIN_SUCCESS = "LOGIN_SUCCESS";
+const LOGIN_FAIL = "LOGIN_FAIL";
 const LOGOUT = "LOGOUT";
 
 const mutations = {
@@ -34,7 +35,12 @@ const mutations = {
 
   [LOGIN_SUCCESS](state,creds) {   
     state.isLoggedIn = firebase.auth().currentUser;
+    //console.log(state.isLoggedIn);
     state.pending = false; // HIDE PreLoader
+  },
+
+  [LOGIN_FAIL](state) {
+    console.log("LOGIN_FAILED");
   },
 
   [LOGOUT](state) {
@@ -57,6 +63,12 @@ const actions = {
 /* LOGIN SUCCESS */  
   loginSuccess({state,commit,rootState}, creds) {
     commit(LOGIN_SUCCESS,creds); // show spinner
+  },
+/* END LOGIN */
+
+/* LOGIN FAIL */  
+  loginFail({state,commit,rootState}) {
+    commit(LOGIN_FAIL); // show spinner
   },
 /* END LOGIN */
 
